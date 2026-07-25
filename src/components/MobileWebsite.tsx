@@ -498,7 +498,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
             <div className="w-full flex justify-between items-center text-[9px] tracking-widest text-white/30 uppercase pt-2 font-mono">
               <div className="flex items-center gap-1.5">
                 <MobilePixelHeart color="#FFB347" size="xs" pulse className="translate-y-[-1px]" />
-                <span>QPKS-APP-VER1.0.1</span>
+                <span>QPKS-APP-VER2.0</span>
               </div>
               <div>{currentTime}</div>
             </div>
@@ -621,7 +621,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
               <div className="w-full flex justify-between items-center text-[9px] tracking-widest text-white/30 uppercase font-mono pl-14">
                 <div className="flex items-center gap-1.5">
                   <MobilePixelDownload color="#7CFC00" size="xs" pulse className="translate-y-[-1px]" />
-                  <span>QPKS-APP-VER1.0.1</span>
+                  <span>QPKS-APP-VER2.0</span>
                 </div>
                 <div>{currentTime}</div>
               </div>

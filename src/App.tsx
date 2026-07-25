@@ -4068,8 +4068,8 @@ export default function App() {
             const hour = new Date().getHours();
             const isLateNight = hour >= 1 && hour < 9;
             return isLateNight 
-              ? "紡塊像素CubePixel_2026 感謝團長涼海璃 大半夜不睡覺還在更新官網 《QPKS-VER2.0.1.1》"
-              : "紡塊像素CubePixel_2026 感謝團長涼海璃製作 《QPKS-VER2.0.1.1》";
+              ? "紡塊像素CubePixel_2026 感謝團長涼海璃 大半夜不睡覺還在更新官網 《QPKS-VER3.0.0》"
+              : "紡塊像素CubePixel_2026 感謝團長涼海璃製作 《QPKS-VER3.0.0》";
           })()}
         </span>
       </div>
