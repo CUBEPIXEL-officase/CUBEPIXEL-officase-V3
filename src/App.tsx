@@ -3077,7 +3077,7 @@ export default function App() {
                                   >
                                     <div className="text-3xl md:text-4xl tracking-widest opacity-60">聯繫酸欠像素居酒屋</div>
                                     <div className="text-2xl md:text-3xl text-[#D1B3FF] tracking-wider font-black">
-                                      地址: 福和路120號
+                                      地址: 福和路120號之2
                                     </div>
                                     <div className="text-xl md:text-2xl opacity-80 font-mono tracking-widest">
                                       電話: 02-8925-2329
@@ -3264,7 +3264,7 @@ export default function App() {
                               {/* Address Display Card */}
                               <div className="text-center mb-8">
                                 <h4 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-widest mb-4">
-                                  新北永和福和路120號
+                                  新北永和福和路120號之2
                                 </h4>
                                 <div className="inline-block bg-[#FFB347]/10 border border-[#FFB347]/30 text-[#FFB347] font-black tracking-widest text-sm md:text-base px-6 py-2.5 rounded-full shadow-[0_0_15px_rgba(255,179,71,0.2)] animate-pulse">
                                   📌 右方玻璃門區
@@ -3274,7 +3274,7 @@ export default function App() {
                               {/* Interactive Iframe Map Container */}
                               <div className="w-full h-[350px] md:h-[450px] bg-black/60 rounded-xl overflow-hidden border border-white/10 relative shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]">
                                 <iframe
-                                  src="https://maps.google.com/maps?q=%E6%96%B0%E5%8C%97%E5%B8%82%E6%B0%B8%E5%92%8C%E5%8D%80%E7%A6%8F%E5%92%8C%E8%B7%AF120%E8%99%9F&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                  src="https://maps.google.com/maps?q=%E6%96%B0%E5%8C%97%E5%B8%82%E6%B0%B8%E5%92%8C%E5%8D%80%E7%A6%8F%E5%92%8C%E8%B7%AF120%E8%99%9F%E4%B9%8B2&t=&z=16&ie=UTF8&iwloc=&output=embed"
                                   className="w-full h-full border-0 grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-500"
                                   allowFullScreen={true}
                                   loading="lazy"
@@ -3288,7 +3288,7 @@ export default function App() {
                               {/* Copy and Open Button Options */}
                               <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
                                 <a
-                                  href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%8C%97%E5%B8%82%E6%B0%B8%E5%92%8C%E5%8D%80%E7%A6%8F%E5%92%8C%E8%B7%AF120%E8%99%9F"
+                                  href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%8C%97%E5%B8%82%E6%B0%B8%E5%92%8C%E5%8D%80%E7%A6%8F%E5%92%8C%E8%B7%AF120%E8%99%9F%E4%B9%8B2"
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="px-6 py-3 bg-white/5 hover:bg-[#FFB347]/20 border border-white/10 hover:border-[#FFB347]/40 text-white font-bold text-xs sm:text-sm rounded-xl tracking-widest font-mono transition-all duration-300 flex items-center gap-2 shadow-lg"
@@ -3297,7 +3297,7 @@ export default function App() {
                                 </a>
                                 <button
                                   onClick={() => {
-                                    navigator.clipboard.writeText("新北市永和區福和路120號");
+                                    navigator.clipboard.writeText("新北市永和區福和路120號之2");
                                     alert("地址已複製到剪貼簿！");
                                   }}
                                   className="px-6 py-3 bg-white/5 hover:bg-[#87CEEB]/20 border border-white/10 hover:border-[#87CEEB]/40 text-white font-bold text-xs sm:text-sm rounded-xl tracking-widest font-mono transition-all duration-300 flex items-center gap-2 shadow-lg"

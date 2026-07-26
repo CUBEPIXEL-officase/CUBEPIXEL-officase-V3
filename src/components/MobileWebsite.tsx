@@ -667,7 +667,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
               <div className="space-y-1 text-left text-[11px] text-white/80 font-mono">
                 <p className="flex justify-between items-center">
                   <span className="text-white/45 font-rounded text-[10px]">📍 實體地址:</span>
-                  <span className="font-bold text-amber-300">福和路120號</span>
+                  <span className="font-bold text-amber-300">福和路120號之2</span>
                 </p>
                 <p className="flex justify-between items-center">
                   <span className="text-white/45 font-rounded text-[10px]">📞 聯絡電話:</span>
@@ -932,7 +932,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                     </h3>
                     
                     <div className="text-xs text-white/80 leading-relaxed font-mono font-medium space-y-1">
-                      <p>📍 <span className="text-amber-300 font-bold">地址：</span>新北市永和區福和路120號</p>
+                      <p>📍 <span className="text-amber-300 font-bold">地址：</span>新北市永和區福和路120號之2</p>
                       <p>📞 <span className="text-purple-300 font-bold">電話：</span>02-8925-2329</p>
                       <p className="text-[11px] text-white/60 pt-0.5">
                         門市開放情況與開門注意事項可參閱「社群預約功能」說明。
