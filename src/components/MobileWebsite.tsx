@@ -1462,6 +1462,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                       ? ([
                           { id: "model_box_damaged", name: "模型區(盒損)" },
                           { id: "model_unboxed_display", name: "模型區(拆擺)" },
+                          { id: "defect_special", name: "瑕疵特惠區" },
                         ].find(c => c.id === selectedMerchCategory)?.name || "商品清單")
                       : "熱門商品專區"}
                   </h2>
@@ -1496,6 +1497,17 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           icon: "🧸",
                           count: "門市專區",
                           desc: "櫥櫃展示 / 高CP值",
+                        },
+                        {
+                          id: "defect_special",
+                          name: "瑕疵特惠區",
+                          badge: "瑕疵特惠",
+                          badgeBg: "bg-slate-600/80 text-white",
+                          borderColor: "border-slate-500/40 hover:border-slate-400",
+                          glowColor: "shadow-[0_0_15px_rgba(148,163,184,0.2)]",
+                          icon: "⚠️",
+                          count: "門市專區",
+                          desc: "瑕疵釋出 / 優惠特價",
                         },
                       ].map((cat) => (
                         <motion.button
@@ -1962,6 +1974,47 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                             <div className="w-full text-center z-10">
                               <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
                                 萬代 鬼滅之刃 竈門禰豆子
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedMerchCategory === "defect_special" && (
+                      <div className="space-y-3">
+                        <div className="p-3 bg-slate-500/10 border border-slate-500/20 rounded-xl text-[10px] text-slate-300 font-mono">
+                          ⚠️ 【瑕疵特惠區】門市特別標示與特惠商品，商品狀況如備註標示，歡迎現場看貨。
+                        </div>
+
+                        {/* 2-Column Product Grid */}
+                        <div className="grid grid-cols-2 gap-3 w-full">
+                          {/* Item 灰01 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-slate-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(148,163,184,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-slate-600 text-white border border-slate-400/40 shadow-sm">
+                                編號 01
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1Hnn7WIaa9KbMqtdy1DgG8GXjY5gKKH0K&sz=w1000"
+                                alt="萬代 鬼滅之刃 一隻豬2P色"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name & Note */}
+                            <div className="w-full text-center z-10 space-y-0.5">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                萬代 鬼滅之刃 一隻豬2P色
+                              </div>
+                              <div className="text-[9px] font-bold text-amber-300/90 font-mono bg-amber-500/10 rounded py-0.5 px-1 inline-block border border-amber-500/20">
+                                ⚠️ 軟腳 已動正骨手術
                               </div>
                             </div>
                           </div>
