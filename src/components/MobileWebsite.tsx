@@ -188,6 +188,55 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
   const [selectedMobileFighter, setSelectedMobileFighter] = useState<any | null>(null);
   const [selectedHeartId, setSelectedHeartId] = useState<string | null>(null);
 
+  const [merchItems, setMerchItems] = useState<{ id: string; num: string; name: string; url: string }[]>(() => {
+    const saved = localStorage.getItem('qpixel_merch_grid');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return [
+      { id: '1', num: '01', name: '01 商品', url: NEW_LOGO_URL },
+      { id: '2', num: '02', name: '02 商品', url: umiriOfficialPhoto },
+      { id: '3', num: '03', name: '03 商品', url: 'https://lh3.googleusercontent.com/d/1UQln4avTEezktGqc7ezjiV8BjN3ugH1-' },
+      { id: '4', num: '04', name: '04 商品', url: 'https://lh3.googleusercontent.com/d/1I5Y6bWvuyfmAn5mispwM-oBZFbz2d6nR' },
+      { id: '5', num: '05', name: '05 商品', url: 'https://lh3.googleusercontent.com/d/1Atub1Buz03kfpOBXkTmpHEG6ySWRVoYl' },
+      { id: '6', num: '06', name: '06 商品', url: 'https://lh3.googleusercontent.com/d/17Vt5pwNSqbxZvjtWZPTNtiI8droJP_62' },
+    ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('qpixel_merch_grid', JSON.stringify(merchItems));
+  }, [merchItems]);
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    const newItems = [...merchItems];
+    let processed = 0;
+
+    (Array.from(files) as File[]).forEach((file: File) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target?.result as string;
+        if (result) {
+          const nextIndex = newItems.length + 1;
+          const numStr = nextIndex < 10 ? `0${nextIndex}` : `${nextIndex}`;
+          newItems.push({
+            id: `item-${Date.now()}-${Math.random()}`,
+            num: numStr,
+            name: `${numStr} 商品`,
+            url: result
+          });
+        }
+        processed++;
+        if (processed === files.length) {
+          setMerchItems(newItems);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   useEffect(() => {
     const checkStandalone = () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -703,7 +752,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
               <div className="space-y-1 text-left text-[11px] text-white/80 font-mono">
                 <p className="flex justify-between items-center">
                   <span className="text-white/45 font-rounded text-[10px]">📍 實體地址:</span>
-                  <span className="font-bold text-amber-300">福和路120號之2</span>
+                  <span className="font-bold text-amber-300">新北市永和區福和路120號之2</span>
                 </p>
                 <p className="flex justify-between items-center">
                   <span className="text-white/45 font-rounded text-[10px]">📞 聯絡電話:</span>
@@ -1456,144 +1505,62 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   </p>
                 </div>
 
-                {/* Merch List */}
-                <div className="space-y-3.5 text-left w-full">
-                  
-                  {/* Item 1: 紀念T恤 */}
-                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-amber-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-amber-400/50 transition-all shadow-[0_0_15px_rgba(255,179,71,0.08)]">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-white font-rounded">
-                            紡塊像素 官方紀念T恤
-                          </span>
-                          <span className="text-[8px] px-1.5 py-0.5 bg-red-500 text-white font-black rounded font-mono">
-                            HOT 人氣王
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
-                          經典像素LOGO純棉T恤 (黑/白)
-                        </span>
+                {/* Batch Image Upload Button */}
+                <div className="w-full mb-1">
+                  <label className="w-full py-2.5 px-3 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-purple-500/20 border border-amber-500/40 hover:border-amber-400 rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all text-xs font-black text-amber-300 font-mono">
+                    <span>📁 批次上傳 / 新增商品圖片 (3格/排)</span>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      multiple 
+                      onChange={handleImageUpload} 
+                      className="hidden" 
+                    />
+                  </label>
+                </div>
+
+                {/* 3-Column Grid of Product Image Boxes */}
+                <div className="grid grid-cols-3 gap-2 sm:gap-2.5 w-full text-left">
+                  {merchItems.map((item) => (
+                    <div 
+                      key={item.id}
+                      className="bg-black/70 border border-amber-500/30 hover:border-amber-400/80 rounded-xl p-2 flex flex-col items-center justify-between shadow-[0_4px_12px_rgba(0,0,0,0.6)] transition-all group relative overflow-hidden"
+                    >
+                      {/* Number Badge Top-Left */}
+                      <div className="absolute top-1 left-1 bg-amber-500 text-black text-[8px] font-black font-mono px-1.5 py-0.5 rounded z-10 shadow">
+                        #{item.num}
                       </div>
-                      <div className="text-right">
-                        <span className="text-sm font-black text-amber-300 font-mono">
-                          NT$ 750
+
+                      {/* Delete Option Button */}
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setMerchItems(prev => prev.filter(p => p.id !== item.id));
+                        }}
+                        className="absolute top-1 right-1 bg-red-600/80 hover:bg-red-500 text-white text-[8px] font-mono px-1.5 py-0.5 rounded z-10 opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
+                        title="刪除"
+                      >
+                        ✕
+                      </button>
+
+                      {/* Image Frame Box */}
+                      <div className="w-full aspect-square rounded-lg overflow-hidden bg-black/80 border border-white/10 flex items-center justify-center my-1 relative mt-5">
+                        <img 
+                          src={item.url} 
+                          alt={item.name} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+
+                      {/* Name Tag with Numeric Numbering */}
+                      <div className="w-full text-center mt-1">
+                        <span className="text-[10px] sm:text-xs font-black text-amber-300 font-mono tracking-wider truncate block">
+                          {item.name}
                         </span>
                       </div>
                     </div>
-                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
-                      重磅舒適純棉，胸前高精度像素LOGO刺繡，背後成員像素總動員圖樣，公演推活必備首選！
-                    </p>
-                  </div>
-
-                  {/* Item 2: 涼海璃壓克力立牌 */}
-                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-rose-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-rose-400/50 transition-all shadow-[0_0_15px_rgba(244,63,94,0.08)]">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-white font-rounded">
-                            涼海璃 (Umiri) 壓克力立牌
-                          </span>
-                          <span className="text-[8px] px-1.5 py-0.5 bg-rose-500 text-white font-black rounded font-mono">
-                            店長精選
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
-                          居酒屋店長限定款 (15cm)
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm font-black text-rose-300 font-mono">
-                          NT$ 380
-                        </span>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
-                      高解析全彩雙面壓克力，附酸欠像素居酒屋專屬底座與涼海璃店長隨機手寫留言小卡乙張。
-                    </p>
-                  </div>
-
-                  {/* Item 3: 試營運徽章組 */}
-                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-yellow-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-yellow-400/50 transition-all shadow-[0_0_15px_rgba(234,179,8,0.08)]">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-white font-rounded">
-                            試營運特別紀念徽章組
-                          </span>
-                          <span className="text-[8px] px-1.5 py-0.5 bg-amber-500 text-black font-black rounded font-mono">
-                            門市限定
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
-                          經典3入金屬馬口鐵徽章 (58mm)
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm font-black text-yellow-300 font-mono">
-                          NT$ 250
-                        </span>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
-                      收錄酸欠像素招牌、涼海璃店長Q版與像素心心經典LOGO，限定發售售完不補！
-                    </p>
-                  </div>
-
-                  {/* Item 4: 應援手燈 */}
-                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-emerald-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-emerald-400/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.08)]">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-white font-rounded">
-                            Q-PIXEL 閃亮像素應援手燈
-                          </span>
-                          <span className="text-[8px] px-1.5 py-0.5 bg-emerald-500 text-black font-black rounded font-mono">
-                            公演必備
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
-                          8色可切換 官方現場應援棒
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm font-black text-emerald-300 font-mono">
-                          NT$ 550
-                        </span>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
-                      多段高亮發光模式，內建8種團員代表色切換，現場ライブ必備應援神器！
-                    </p>
-                  </div>
-
-                  {/* Item 5: 拍立得卡套 */}
-                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-cyan-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-cyan-400/50 transition-all shadow-[0_0_15px_rgba(6,182,212,0.08)]">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-white font-rounded">
-                            拍立得卡套與生寫真集
-                          </span>
-                          <span className="text-[8px] px-1.5 py-0.5 bg-cyan-500 text-black font-black rounded font-mono">
-                            NEW 新品
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
-                          復古像素相框 + 隨機生寫真
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm font-black text-cyan-300 font-mono">
-                          NT$ 320
-                        </span>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
-                      高質感透明拍立得保護套，隨機加贈團員生寫真乙張（有機會抽中親筆簽名隱藏版）！
-                    </p>
-                  </div>
-
+                  ))}
                 </div>
 
                 {/* Reservation / Purchase hint button */}
