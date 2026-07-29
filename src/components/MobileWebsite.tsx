@@ -1590,6 +1590,87 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                               </div>
                             </div>
                           </div>
+
+                          {/* Item #02 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
+                                編號 02
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1ibftNDEU-JwGwbiPnnLsXn3Mm6JbvBvQ&sz=w1000"
+                                alt="QP 美少女戰士 木野真琴"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                QP 美少女戰士 木野真琴
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Item #03 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
+                                編號 03
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1t52v7ZFlSnClpDDQbv4KtInzMIEBNIGI&sz=w1000"
+                                alt="QP 東京卍復仇者 九井一"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                QP 東京卍復仇者 九井一
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Item #04 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
+                                編號 04
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=16S6agIXZDylDe7EfJUnkwojP66XKhbeG&sz=w1000"
+                                alt="QP 航海王 娜美"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                QP 航海王 娜美
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )}
