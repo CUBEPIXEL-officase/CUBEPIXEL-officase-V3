@@ -1566,6 +1566,11 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                         <div className="grid grid-cols-2 gap-3 w-full">
                           {/* Item #01 */}
                           <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Left QP Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-red-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              QP
+                            </span>
+
                             {/* Top Number */}
                             <div className="w-full flex justify-center z-10">
                               <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
@@ -1593,6 +1598,11 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
 
                           {/* Item #02 */}
                           <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Left QP Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-red-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              QP
+                            </span>
+
                             {/* Top Number */}
                             <div className="w-full flex justify-center z-10">
                               <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
@@ -1620,6 +1630,11 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
 
                           {/* Item #03 */}
                           <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Left QP Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-red-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              QP
+                            </span>
+
                             {/* Top Number */}
                             <div className="w-full flex justify-center z-10">
                               <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
@@ -1647,6 +1662,11 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
 
                           {/* Item #04 */}
                           <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Left QP Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-red-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              QP
+                            </span>
+
                             {/* Top Number */}
                             <div className="w-full flex justify-center z-10">
                               <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
@@ -1674,6 +1694,11 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
 
                           {/* Item #05 */}
                           <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Left QP Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-red-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              QP
+                            </span>
+
                             {/* Top Number */}
                             <div className="w-full flex justify-center z-10">
                               <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
@@ -1701,6 +1726,11 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
 
                           {/* Item #06 */}
                           <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Left QP Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-red-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              QP
+                            </span>
+
                             {/* Top Number */}
                             <div className="w-full flex justify-center z-10">
                               <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
@@ -1789,11 +1819,39 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           🧸 【模型區 - 拆擺良品】門市櫥櫃展擺商品，無原外盒，本體保持優良，歡迎現場看貨。
                         </div>
 
-                        {/* Empty state - No default items */}
-                        <div className="w-full bg-white/[0.02] border border-dashed border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center gap-2">
-                          <div className="text-3xl">🧸</div>
-                          <div className="text-xs font-bold text-white/80 font-rounded">目前【模型區(拆擺)】尚無架上商品</div>
-                          <div className="text-[10px] text-white/40 font-mono">歡迎關注門市最新進貨通知或向店員洽詢</div>
+                        {/* 2-Column Product Grid */}
+                        <div className="grid grid-cols-2 gap-3 w-full">
+                          {/* Item #01 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Left QP Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-red-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              QP
+                            </span>
+
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
+                                編號 01
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1IkgriLW6hxmQsF1gaVhlh5W8POIHwTHL&sz=w1000"
+                                alt="QP 海賊王 波雅漢考克"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                QP 海賊王 波雅漢考克
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )}
