@@ -4,6 +4,8 @@ import { Sparkles, Monitor, RefreshCw, ChevronLeft, AlertTriangle } from 'lucide
 import { EventCalendar } from './EventCalendar';
 import { umiriPhotoBase64 as umiriOfficialPhoto } from '../assets/umiriPhotoBase64';
 
+const TANJIRO_IMAGE_URL = "/images/tanjiro_qposket.jpg";
+
 const NEW_LOGO_URL = "https://drive.google.com/thumbnail?id=1HvP72IEkODWDk29WboH2lHwIq8bvNEZ-&sz=w1000";
 
 const COLORS = [
@@ -1555,15 +1557,62 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                     {/* Category Items List */}
                     {selectedMerchCategory === "model_box_damaged" && (
                       <div className="space-y-3">
-                        <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-[10px] text-red-300 font-mono">
-                          ⚠️ 【模型區 - 盒損特惠】外盒受擠壓或角落磨損，內部模型全新未拆，超高CP值特惠專區。
+                        <div className="p-2.5 bg-red-500/10 border border-red-500/20 rounded-xl text-[10px] text-red-300 font-mono flex items-center gap-1.5">
+                          <span>⚠️</span>
+                          <span>【模型區 - 盒損特惠】外盒微損或擠壓，內部本體完好全新，CP值極高！</span>
                         </div>
 
-                        {/* Empty state - No default items */}
-                        <div className="w-full bg-white/[0.02] border border-dashed border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center gap-2">
-                          <div className="text-3xl">📦</div>
-                          <div className="text-xs font-bold text-white/80 font-rounded">目前【模型區(盒損)】尚無架上商品</div>
-                          <div className="text-[10px] text-white/40 font-mono">歡迎關注門市最新進貨通知或向店員洽詢</div>
+                        {/* Item Card #01 */}
+                        <div className="w-full bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-md rounded-2xl p-3.5 border border-red-500/30 relative overflow-hidden flex flex-col gap-3 shadow-[0_0_20px_rgba(239,68,68,0.12)]">
+                          {/* Top Badges */}
+                          <div className="flex justify-between items-center">
+                            <div className="flex items-center gap-1.5">
+                              <span className="px-2 py-0.5 bg-amber-500 text-black font-mono font-black text-[10px] rounded-md shadow-sm">
+                                編號 01
+                              </span>
+                              <span className="px-2 py-0.5 bg-red-500/80 text-white font-mono font-bold text-[9px] rounded-md">
+                                模型盒損區
+                              </span>
+                            </div>
+                            <span className="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                              ● 門市現貨
+                            </span>
+                          </div>
+
+                          {/* Image & Main Info */}
+                          <div className="flex gap-3 items-center">
+                            <div className="w-24 h-28 shrink-0 rounded-xl overflow-hidden border border-white/20 bg-black/40 relative shadow-inner group cursor-pointer">
+                              <img
+                                src={TANJIRO_IMAGE_URL}
+                                alt="QP 鬼滅之刃 竈門炭治郎"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                              <span className="absolute bottom-1 right-1 text-[8px] bg-black/70 text-amber-300 px-1 rounded font-mono">
+                                實物圖
+                              </span>
+                            </div>
+
+                            <div className="flex-1 space-y-1.5 text-left">
+                              <h3 className="text-sm font-black text-white font-rounded leading-snug tracking-wide">
+                                QP 鬼滅之刃 竈門炭治郎
+                              </h3>
+                              <div className="text-[10px] text-amber-300/90 font-mono space-y-0.5">
+                                <div>品牌：BANPRESTO Qposket</div>
+                                <div>作品：鬼滅之刃 (Demon Slayer)</div>
+                                <div>規格：盒裝Q版姿態模型</div>
+                              </div>
+                              <div className="pt-1 flex items-center justify-between border-t border-white/10">
+                                <span className="text-[9px] text-white/50 font-mono">狀態：外盒損傷 / 本體全新</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Description */}
+                          <p className="text-[11px] text-white/70 leading-relaxed font-sans bg-white/[0.02] p-2 rounded-lg border border-white/5">
+                            【編號01】Q posket 鬼滅之刃 竈門炭治郎，經典黑綠棋盤格羽織與耳環造型，精緻眼神塗裝，外盒壓痕磨損出清特價。
+                          </p>
                         </div>
                       </div>
                     )}
