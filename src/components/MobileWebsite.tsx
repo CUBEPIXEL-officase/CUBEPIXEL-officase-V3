@@ -1462,7 +1462,6 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                       ? ([
                           { id: "model_box_damaged", name: "模型區(盒損)" },
                           { id: "model_unboxed_display", name: "模型區(拆擺)" },
-                          { id: "outer_uncategorized", name: "外區(無分類)" }
                         ].find(c => c.id === selectedMerchCategory)?.name || "商品清單")
                       : "熱門商品專區"}
                   </h2>
@@ -1471,10 +1470,10 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   </p>
                 </div>
 
-                {/* 1. 第一個總子畫面：大項目分類選單 (直式框線 aspect-[3/4]) */}
+                {/* 1. 第一個總子畫面：大項目分類選單與外區商品 (直式框線 aspect-[3/4]) */}
                 {!selectedMerchCategory ? (
                   <div className="w-full space-y-4">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
+                    <div className="grid grid-cols-2 gap-3 w-full">
                       {[
                         {
                           id: "model_box_damaged",
@@ -1497,17 +1496,6 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           icon: "🧸",
                           count: "門市專區",
                           desc: "櫥櫃展示 / 高CP值",
-                        },
-                        {
-                          id: "outer_uncategorized",
-                          name: "外區(無分類)",
-                          badge: "外區精選",
-                          badgeBg: "bg-emerald-500/80 text-white",
-                          borderColor: "border-emerald-500/40 hover:border-emerald-400",
-                          glowColor: "shadow-[0_0_15px_rgba(16,185,129,0.2)]",
-                          icon: "🎁",
-                          count: "門市專區",
-                          desc: "熱門選購 / 歡樂自選",
                         },
                       ].map((cat) => (
                         <motion.button
@@ -1543,48 +1531,37 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         </motion.button>
                       ))}
-                    </div>
 
-                    {/* 外區 (無分類) 商品展示 */}
-                    <div className="space-y-2 pt-2 text-left">
-                      <div className="flex items-center justify-between px-1">
-                        <span className="text-[11px] font-black text-emerald-400 font-rounded flex items-center gap-1">
-                          <span>🎁</span> 【外區 - 無分類商品】
-                        </span>
-                        <span className="text-[9px] text-white/40 font-mono">門市現場現貨</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3 w-full">
-                        {/* Item 綠02 */}
-                        <div className="aspect-[3/4] w-full rounded-2xl border-2 border-emerald-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.2)] group">
-                          {/* Top Number */}
-                          <div className="w-full flex justify-center z-10">
-                            <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-emerald-600 text-white border border-emerald-400/40 shadow-sm">
-                              編號 02
-                            </span>
-                          </div>
+                      {/* 外區商品 (與分類項按鈕擺在一起) Item 綠02 */}
+                      <div className="aspect-[3/4] w-full rounded-2xl border-2 border-emerald-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.2)] group">
+                        {/* Top Number */}
+                        <div className="w-full flex justify-center z-10">
+                          <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-emerald-600 text-white border border-emerald-400/40 shadow-sm">
+                            編號 02
+                          </span>
+                        </div>
 
-                          {/* Product Image */}
-                          <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
-                            <img
-                              src="https://drive.google.com/thumbnail?id=17otFQ0_ayuUs3ial6s7GCuSmZ3FY5fcb&sz=w1000"
-                              alt="二十元快樂自選"
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                              referrerPolicy="no-referrer"
-                            />
-                          </div>
+                        {/* Product Image */}
+                        <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                          <img
+                            src="https://drive.google.com/thumbnail?id=17otFQ0_ayuUs3ial6s7GCuSmZ3FY5fcb&sz=w1000"
+                            alt="二十元快樂自選"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
 
-                          {/* Name Only */}
-                          <div className="w-full text-center z-10">
-                            <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
-                              二十元快樂自選
-                            </div>
+                        {/* Name Only */}
+                        <div className="w-full text-center z-10">
+                          <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                            二十元快樂自選
                           </div>
                         </div>
                       </div>
                     </div>
 
                     <div className="p-3 bg-white/[0.02] border border-white/10 rounded-2xl text-[10px] text-white/50 font-mono text-center">
-                      💡 提示：點擊上方直式分類卡片即可進入對應商品專區
+                      💡 提示：點擊上方分類卡片即可進入專區或直接點選商品
                     </div>
                   </div>
                 ) : (
@@ -1985,46 +1962,6 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                             <div className="w-full text-center z-10">
                               <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
                                 萬代 鬼滅之刃 竈們禰豆子
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Category: Outer Uncategorized Area */}
-                    {selectedMerchCategory === "outer_uncategorized" && (
-                      <div className="space-y-3">
-                        <div className="p-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-[10px] text-emerald-300 font-mono flex items-center gap-1.5">
-                          <span>🎁</span>
-                          <span>【外區 - 無分類】門市熱門歡樂自選商品。</span>
-                        </div>
-
-                        {/* 2-Column Product Grid */}
-                        <div className="grid grid-cols-2 gap-3 w-full">
-                          {/* Item 綠02 */}
-                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-emerald-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.2)] group">
-                            {/* Top Number */}
-                            <div className="w-full flex justify-center z-10">
-                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-emerald-600 text-white border border-emerald-400/40 shadow-sm">
-                                編號 02
-                              </span>
-                            </div>
-
-                            {/* Product Image */}
-                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
-                              <img
-                                src="https://drive.google.com/thumbnail?id=17otFQ0_ayuUs3ial6s7GCuSmZ3FY5fcb&sz=w1000"
-                                alt="二十元快樂自選"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                referrerPolicy="no-referrer"
-                              />
-                            </div>
-
-                            {/* Name Only */}
-                            <div className="w-full text-center z-10">
-                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
-                                二十元快樂自選
                               </div>
                             </div>
                           </div>
