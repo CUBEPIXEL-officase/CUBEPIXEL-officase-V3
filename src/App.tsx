@@ -3077,7 +3077,7 @@ export default function App() {
                                   >
                                     <div className="text-3xl md:text-4xl tracking-widest opacity-60">聯繫酸欠像素居酒屋</div>
                                     <div className="text-2xl md:text-3xl text-[#D1B3FF] tracking-wider font-black">
-                                      地址: 新北市永和區福和路120號之2
+                                      地址: 福和路120號之2
                                     </div>
                                     <div className="text-xl md:text-2xl opacity-80 font-mono tracking-widest">
                                       電話: 02-8925-2329
@@ -3264,7 +3264,7 @@ export default function App() {
                               {/* Address Display Card */}
                               <div className="text-center mb-8">
                                 <h4 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-widest mb-4">
-                                  新北市永和區福和路120號之2
+                                  新北永和福和路120號之2
                                 </h4>
                                 <div className="inline-block bg-[#FFB347]/10 border border-[#FFB347]/30 text-[#FFB347] font-black tracking-widest text-sm md:text-base px-6 py-2.5 rounded-full shadow-[0_0_15px_rgba(255,179,71,0.2)] animate-pulse">
                                   📌 右方玻璃門區
