@@ -1952,7 +1952,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                             <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
                               <img
                                 src="https://drive.google.com/thumbnail?id=1E9WXaMu8ugCwZnUhn3ELHEhdqB9kmtbX&sz=w1000"
-                                alt="萬代 鬼滅之刃 竈們禰豆子"
+                                alt="萬代 鬼滅之刃 竈門禰豆子"
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 referrerPolicy="no-referrer"
                               />
@@ -1961,7 +1961,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                             {/* Name Only */}
                             <div className="w-full text-center z-10">
                               <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
-                                萬代 鬼滅之刃 竈們禰豆子
+                                萬代 鬼滅之刃 竈門禰豆子
                               </div>
                             </div>
                           </div>
