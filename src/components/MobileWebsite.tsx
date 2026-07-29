@@ -1459,11 +1459,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                     {selectedMerchCategory 
                       ? ([
                           { id: "model_box_damaged", name: "模型區(盒損)" },
-                          { id: "model_unboxed_display", name: "模型區(拆擺)" },
-                          { id: "popular_goods", name: "熱門周邊" },
-                          { id: "apparel", name: "服飾物販" },
-                          { id: "acrylic", name: "壓克力區" },
-                          { id: "special", name: "門市特賞" }
+                          { id: "model_unboxed_display", name: "模型區(拆擺)" }
                         ].find(c => c.id === selectedMerchCategory)?.name || "商品清單")
                       : "熱門商品專區"}
                   </h2>
@@ -1472,10 +1468,10 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   </p>
                 </div>
 
-                {/* 1. 第一個總子畫面：大項目分類選單 (一橫排三個，4比3直式框線 aspect-[3/4]) */}
+                {/* 1. 第一個總子畫面：大項目分類選單 (直式框線 aspect-[3/4]) */}
                 {!selectedMerchCategory ? (
                   <div className="w-full space-y-3">
-                    <div className="grid grid-cols-3 gap-2.5 w-full">
+                    <div className="grid grid-cols-2 gap-3 w-full">
                       {[
                         {
                           id: "model_box_damaged",
@@ -1485,7 +1481,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           borderColor: "border-red-500/40 hover:border-red-400",
                           glowColor: "shadow-[0_0_15px_rgba(239,68,68,0.2)]",
                           icon: "📦",
-                          count: "4款商品",
+                          count: "門市專區",
                           desc: "外盒損傷 / 內部全新",
                         },
                         {
@@ -1496,52 +1492,8 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           borderColor: "border-rose-500/40 hover:border-rose-400",
                           glowColor: "shadow-[0_0_15px_rgba(244,63,94,0.2)]",
                           icon: "🧸",
-                          count: "4款商品",
+                          count: "門市專區",
                           desc: "櫥櫃展示 / 高CP值",
-                        },
-                        {
-                          id: "popular_goods",
-                          name: "熱門周邊",
-                          badge: "HOT 人氣",
-                          badgeBg: "bg-amber-500 text-black",
-                          borderColor: "border-amber-500/40 hover:border-amber-400",
-                          glowColor: "shadow-[0_0_15px_rgba(245,158,11,0.2)]",
-                          icon: "🔥",
-                          count: "5款商品",
-                          desc: "官方經典熱銷物販",
-                        },
-                        {
-                          id: "apparel",
-                          name: "服飾物販",
-                          badge: "STYLE 穿搭",
-                          badgeBg: "bg-purple-500/80 text-white",
-                          borderColor: "border-purple-500/40 hover:border-purple-400",
-                          glowColor: "shadow-[0_0_15px_rgba(168,85,247,0.2)]",
-                          icon: "👕",
-                          count: "3款商品",
-                          desc: "帽T / 帽子 / 潮襪",
-                        },
-                        {
-                          id: "acrylic",
-                          name: "壓克力區",
-                          badge: "ART 立牌",
-                          badgeBg: "bg-cyan-500/80 text-black",
-                          borderColor: "border-cyan-500/40 hover:border-cyan-400",
-                          glowColor: "shadow-[0_0_15px_rgba(6,182,212,0.2)]",
-                          icon: "🎨",
-                          count: "3款商品",
-                          desc: "全員立牌與吊飾",
-                        },
-                        {
-                          id: "special",
-                          name: "門市特賞",
-                          badge: "RARE 限定",
-                          badgeBg: "bg-emerald-500/80 text-black",
-                          borderColor: "border-emerald-500/40 hover:border-emerald-400",
-                          glowColor: "shadow-[0_0_15px_rgba(16,185,129,0.2)]",
-                          icon: "🌟",
-                          count: "2款商品",
-                          desc: "現場抽賞與簽名生寫",
                         },
                       ].map((cat) => (
                         <motion.button
@@ -1549,27 +1501,27 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           whileHover={{ scale: 1.03, y: -2 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => setSelectedMerchCategory(cat.id)}
-                          className={`aspect-[3/4] w-full rounded-2xl border-2 ${cat.borderColor} bg-white/[0.04] backdrop-blur-md p-2 flex flex-col justify-between items-center cursor-pointer transition-all ${cat.glowColor} relative overflow-hidden group`}
+                          className={`aspect-[3/4] w-full rounded-2xl border-2 ${cat.borderColor} bg-white/[0.04] backdrop-blur-md p-3 flex flex-col justify-between items-center cursor-pointer transition-all ${cat.glowColor} relative overflow-hidden group`}
                         >
                           {/* Top Badge */}
                           <div className="w-full flex justify-center">
-                            <span className={`text-[8px] font-black font-mono px-1.5 py-0.5 rounded-full ${cat.badgeBg} shadow-sm`}>
+                            <span className={`text-[9px] font-black font-mono px-2 py-0.5 rounded-full ${cat.badgeBg} shadow-sm`}>
                               {cat.badge}
                             </span>
                           </div>
 
                           {/* Center Icon */}
-                          <div className="text-3xl my-auto drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] group-hover:scale-110 transition-transform duration-200">
+                          <div className="text-4xl my-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] group-hover:scale-110 transition-transform duration-200">
                             {cat.icon}
                           </div>
 
                           {/* Bottom Info */}
                           <div className="w-full text-center space-y-0.5">
-                            <div className="text-[11px] font-black text-white font-rounded leading-tight tracking-wider">
+                            <div className="text-xs font-black text-white font-rounded leading-tight tracking-wider">
                               {cat.name}
                             </div>
-                            <div className="text-[8px] text-amber-300/80 font-mono">
-                              {cat.count}
+                            <div className="text-[9px] text-amber-300/80 font-mono">
+                              {cat.desc}
                             </div>
                           </div>
 
@@ -1580,7 +1532,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                     </div>
 
                     <div className="p-3 bg-white/[0.02] border border-white/10 rounded-2xl text-[10px] text-white/50 font-mono text-center">
-                      💡 提示：請點擊上方任意大分類直式卡片觀看詳細商品內容
+                      💡 提示：點擊上方直式分類卡片即可進入對應商品專區
                     </div>
                   </div>
                 ) : (
@@ -1603,282 +1555,31 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                     {/* Category Items List */}
                     {selectedMerchCategory === "model_box_damaged" && (
                       <div className="space-y-3">
-                        <div className="p-2.5 bg-red-500/10 border border-red-500/20 rounded-xl text-[10px] text-red-300 font-mono">
-                          ⚠️ 【模型區 - 盒損特惠】外盒受擠壓或角落磨損，內部模型全新未拆，超高CP值特惠售出！
+                        <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-[10px] text-red-300 font-mono">
+                          ⚠️ 【模型區 - 盒損特惠】外盒受擠壓或角落磨損，內部模型全新未拆，超高CP值特惠專區。
                         </div>
 
-                        {[
-                          {
-                            title: "初音未來 15th Anniversary 景品公仔",
-                            badge: "盒損特價",
-                            price: "NT$ 390",
-                            spec: "外盒頂部輕微擠壓 / 本體全新",
-                            desc: "經典15週年紀念塗裝造型，雙馬尾細節精緻，外盒些微運送壓痕不影響本體展現。"
-                          },
-                          {
-                            title: "涼宮春日 經典姿態公仔",
-                            badge: "外盒壓痕",
-                            price: "NT$ 450",
-                            spec: "外盒正面壓痕 / 內部塑膠封膜未拆",
-                            desc: "經典SOS團長造型，色澤飽滿，絕版盒損折扣降價出清！"
-                          },
-                          {
-                            title: "綾波零 EVA 劇場版駕駛服公仔",
-                            badge: "角落磨損",
-                            price: "NT$ 420",
-                            spec: "盒角微磨損 / 附透明專屬底座",
-                            desc: "新劇場版白色駕駛服經典姿態，塗裝細緻，外盒極微角落磨損。"
-                          },
-                          {
-                            title: "孤獨搖滾 後藤一里 景品公仔",
-                            badge: "凹陷特惠",
-                            price: "NT$ 380",
-                            spec: "外盒側邊輕微凹陷 / 內袋全新完好",
-                            desc: "小吉吉配背吉他盒可愛姿態，內袋封條完整，超划算盒損特價。"
-                          }
-                        ].map((item, idx) => (
-                          <div key={idx} className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-red-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-red-400/50 transition-all shadow-[0_0_15px_rgba(239,68,68,0.08)]">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs font-black text-white font-rounded">{item.title}</span>
-                                  <span className="text-[8px] px-1.5 py-0.5 bg-red-500 text-white font-black rounded font-mono">{item.badge}</span>
-                                </div>
-                                <span className="text-[10px] text-amber-300/80 font-mono block mt-0.5">規格：{item.spec}</span>
-                              </div>
-                              <span className="text-sm font-black text-amber-300 font-mono">{item.price}</span>
-                            </div>
-                            <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">{item.desc}</p>
-                          </div>
-                        ))}
+                        {/* Empty state - No default items */}
+                        <div className="w-full bg-white/[0.02] border border-dashed border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center gap-2">
+                          <div className="text-3xl">📦</div>
+                          <div className="text-xs font-bold text-white/80 font-rounded">目前【模型區(盒損)】尚無架上商品</div>
+                          <div className="text-[10px] text-white/40 font-mono">歡迎關注門市最新進貨通知或向店員洽詢</div>
+                        </div>
                       </div>
                     )}
 
                     {selectedMerchCategory === "model_unboxed_display" && (
                       <div className="space-y-3">
-                        <div className="p-2.5 bg-rose-500/10 border border-rose-500/20 rounded-xl text-[10px] text-rose-300 font-mono">
-                          🧸 【模型區 - 拆擺良品】門市櫥櫃展擺商品，無原外盒，本體保持優良，歡迎現場看貨！
+                        <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl text-[10px] text-rose-300 font-mono">
+                          🧸 【模型區 - 拆擺良品】門市櫥櫃展擺商品，無原外盒，本體保持優良，歡迎現場看貨。
                         </div>
 
-                        {[
-                          {
-                            title: "EVA 二號機 試作型展示公仔",
-                            badge: "櫥櫃拆擺",
-                            price: "NT$ 320",
-                            spec: "無原盒 / 附底座與配件",
-                            desc: "門市櫥櫃長期展示良品，無褪色受潮，配件齊全包裝寄送。"
-                          },
-                          {
-                            title: "賽馬娘 東海帝王 姿態公仔",
-                            badge: "展櫃拆擺",
-                            price: "NT$ 350",
-                            spec: "無原盒 / 本體狀態優良",
-                            desc: "躍動感跑姿展示品，塗裝無刮痕，超高CP值拆擺收藏專區。"
-                          },
-                          {
-                            title: "涼海璃 店長限定試做樣品公仔",
-                            badge: "店長拆擺",
-                            price: "NT$ 490",
-                            spec: "非賣品展示解放 / 14cm 像素塗裝",
-                            desc: "居酒屋展示櫃阿璃店長私人試做模型，狀態極佳，限量釋出！"
-                          },
-                          {
-                            title: "孤獨搖滾 山田涼 姿態公仔",
-                            badge: "拆擺美品",
-                            price: "NT$ 300",
-                            spec: "無原盒 / 本體約9.5成新",
-                            desc: "背貝斯擺姿，本體乾淨無損，適合直接擺上書桌裝飾。"
-                          }
-                        ].map((item, idx) => (
-                          <div key={idx} className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-rose-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-rose-400/50 transition-all shadow-[0_0_15px_rgba(244,63,94,0.08)]">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs font-black text-white font-rounded">{item.title}</span>
-                                  <span className="text-[8px] px-1.5 py-0.5 bg-rose-500 text-white font-black rounded font-mono">{item.badge}</span>
-                                </div>
-                                <span className="text-[10px] text-rose-300/80 font-mono block mt-0.5">規格：{item.spec}</span>
-                              </div>
-                              <span className="text-sm font-black text-rose-300 font-mono">{item.price}</span>
-                            </div>
-                            <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">{item.desc}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {selectedMerchCategory === "popular_goods" && (
-                      <div className="space-y-3">
-                        {[
-                          {
-                            title: "紡塊像素 官方紀念T恤",
-                            badge: "HOT 人氣王",
-                            price: "NT$ 750",
-                            spec: "黑色/白色 (M/L/XL)",
-                            desc: "重磅舒適純棉，胸前高精度像素LOGO刺繡，背後成員像素總動員圖樣，公演推活必備首選！"
-                          },
-                          {
-                            title: "涼海璃 (Umiri) 壓克力立牌",
-                            badge: "店長精選",
-                            price: "NT$ 380",
-                            spec: "15cm 高解析雙面壓克力",
-                            desc: "高解析全彩雙面壓克力，附酸欠像素居酒屋專屬底座與涼海璃店長隨機手寫留言小卡乙張。"
-                          },
-                          {
-                            title: "試營運特別紀念徽章組",
-                            badge: "門市限定",
-                            price: "NT$ 250",
-                            spec: "3入組 / 58mm 馬口鐵",
-                            desc: "收錄酸欠像素招牌、涼海璃店長Q版與像素心心經典LOGO，限定發售售完不補！"
-                          },
-                          {
-                            title: "Q-PIXEL 閃亮像素應援手燈",
-                            badge: "公演必備",
-                            price: "NT$ 550",
-                            spec: "8色切換 / 附手繩",
-                            desc: "多段高亮發光模式，內建8種團員代表色切換，現場ライブ必備應援神器！"
-                          },
-                          {
-                            title: "拍立得卡套與生寫真集",
-                            badge: "NEW 新品",
-                            price: "NT$ 320",
-                            spec: "卡套 + 隨機生寫真乙張",
-                            desc: "高質感透明拍立得保護套，隨機加贈團員生寫真乙張（有機會抽中親筆簽名隱藏版）！"
-                          }
-                        ].map((item, idx) => (
-                          <div key={idx} className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-amber-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-amber-400/50 transition-all shadow-[0_0_15px_rgba(255,179,71,0.08)]">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs font-black text-white font-rounded">{item.title}</span>
-                                  <span className="text-[8px] px-1.5 py-0.5 bg-amber-500 text-black font-black rounded font-mono">{item.badge}</span>
-                                </div>
-                                <span className="text-[10px] text-white/50 font-mono block mt-0.5">規格：{item.spec}</span>
-                              </div>
-                              <span className="text-sm font-black text-amber-300 font-mono">{item.price}</span>
-                            </div>
-                            <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">{item.desc}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {selectedMerchCategory === "apparel" && (
-                      <div className="space-y-3">
-                        {[
-                          {
-                            title: "酸欠像素 聯名刺繡帽T",
-                            badge: "HOT 穿搭",
-                            price: "NT$ 1,280",
-                            spec: "黑色/深藍 (M/L/XL)",
-                            desc: "加厚內刷毛，胸口經典像素字體精緻刺繡，保暖舒適又百搭。"
-                          },
-                          {
-                            title: "紡塊像素 復古刺繡漁夫帽",
-                            badge: "經典潮帽",
-                            price: "NT$ 480",
-                            spec: "黑色 / 通用頭圍",
-                            desc: "硬挺棉質防潑水布料，側邊小像素Heart電繡，日常穿搭與場次最佳配件。"
-                          },
-                          {
-                            title: "涼海璃店長概念 運動長襪",
-                            badge: "店長周邊",
-                            price: "NT$ 180",
-                            spec: "雙入組 (黑+白)",
-                            desc: "高彈力運動長襪，腳踝兩側帶有像素心心標誌，透氣防臭。"
-                          }
-                        ].map((item, idx) => (
-                          <div key={idx} className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-purple-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-purple-400/50 transition-all shadow-[0_0_15px_rgba(168,85,247,0.08)]">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs font-black text-white font-rounded">{item.title}</span>
-                                  <span className="text-[8px] px-1.5 py-0.5 bg-purple-500 text-white font-black rounded font-mono">{item.badge}</span>
-                                </div>
-                                <span className="text-[10px] text-white/50 font-mono block mt-0.5">規格：{item.spec}</span>
-                              </div>
-                              <span className="text-sm font-black text-purple-300 font-mono">{item.price}</span>
-                            </div>
-                            <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">{item.desc}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {selectedMerchCategory === "acrylic" && (
-                      <div className="space-y-3">
-                        {[
-                          {
-                            title: "酸欠像素 全員迷你壓克力吊飾組",
-                            badge: "全員套組",
-                            price: "NT$ 450",
-                            spec: "一套4入 / 5cm 滴膠",
-                            desc: "滴膠加厚防刮表面，附銀色星形金屬扣環，掛包包超可愛！"
-                          },
-                          {
-                            title: "居酒屋特製 像素霓虹感壓克力牌",
-                            badge: "霓虹氣氛",
-                            price: "NT$ 320",
-                            spec: "12cm 桌上擺飾",
-                            desc: "採雙層透光壓克力製作，置於夜燈或桌面能折射出像素霓虹色彩。"
-                          },
-                          {
-                            title: "涼海璃 試營運特別版雙面立牌",
-                            badge: "特別版",
-                            price: "NT$ 380",
-                            spec: "16cm 透明大底座",
-                            desc: "雙面不同表情圖樣（正面笑顏 / 背面傲嬌），居酒屋實體門市試營運紀念款。"
-                          }
-                        ].map((item, idx) => (
-                          <div key={idx} className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-cyan-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-cyan-400/50 transition-all shadow-[0_0_15px_rgba(6,182,212,0.08)]">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs font-black text-white font-rounded">{item.title}</span>
-                                  <span className="text-[8px] px-1.5 py-0.5 bg-cyan-500 text-black font-black rounded font-mono">{item.badge}</span>
-                                </div>
-                                <span className="text-[10px] text-white/50 font-mono block mt-0.5">規格：{item.spec}</span>
-                              </div>
-                              <span className="text-sm font-black text-cyan-300 font-mono">{item.price}</span>
-                            </div>
-                            <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">{item.desc}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {selectedMerchCategory === "special" && (
-                      <div className="space-y-3">
-                        {[
-                          {
-                            title: "酸欠像素 居酒屋開幕一番賞",
-                            badge: "現場限定",
-                            price: "NT$ 200/抽",
-                            spec: "A賞~Last賞 全賞發售中",
-                            desc: "包含涼海璃巨型抱枕、店長特製馬克杯、紀念毛巾與限定生寫真，門市現場即抽即領！"
-                          },
-                          {
-                            title: "涼海璃店長 限量親筆簽名生寫真",
-                            badge: "極罕見",
-                            price: "NT$ 500",
-                            spec: "附防偽金箔貼紙與硬卡套",
-                            desc: "阿璃店長大半夜不睡覺親筆簽名寫真，每一張都有獨一無二像素手繪小圖！"
-                          }
-                        ].map((item, idx) => (
-                          <div key={idx} className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-emerald-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-emerald-400/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.08)]">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs font-black text-white font-rounded">{item.title}</span>
-                                  <span className="text-[8px] px-1.5 py-0.5 bg-emerald-500 text-black font-black rounded font-mono">{item.badge}</span>
-                                </div>
-                                <span className="text-[10px] text-white/50 font-mono block mt-0.5">規格：{item.spec}</span>
-                              </div>
-                              <span className="text-sm font-black text-emerald-300 font-mono">{item.price}</span>
-                            </div>
-                            <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">{item.desc}</p>
-                          </div>
-                        ))}
+                        {/* Empty state - No default items */}
+                        <div className="w-full bg-white/[0.02] border border-dashed border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center gap-2">
+                          <div className="text-3xl">🧸</div>
+                          <div className="text-xs font-bold text-white/80 font-rounded">目前【模型區(拆擺)】尚無架上商品</div>
+                          <div className="text-[10px] text-white/40 font-mono">歡迎關注門市最新進貨通知或向店員洽詢</div>
+                        </div>
                       </div>
                     )}
                   </div>
