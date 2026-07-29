@@ -1559,60 +1559,37 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                       <div className="space-y-3">
                         <div className="p-2.5 bg-red-500/10 border border-red-500/20 rounded-xl text-[10px] text-red-300 font-mono flex items-center gap-1.5">
                           <span>⚠️</span>
-                          <span>【模型區 - 盒損特惠】外盒微損或擠壓，內部本體完好全新，CP值極高！</span>
+                          <span>【模型區 - 盒損特惠】外盒微損或擠壓，內部本體完好全新。</span>
                         </div>
 
-                        {/* Item Card #01 */}
-                        <div className="w-full bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-md rounded-2xl p-3.5 border border-red-500/30 relative overflow-hidden flex flex-col gap-3 shadow-[0_0_20px_rgba(239,68,68,0.12)]">
-                          {/* Top Badges */}
-                          <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-1.5">
-                              <span className="px-2 py-0.5 bg-amber-500 text-black font-mono font-black text-[10px] rounded-md shadow-sm">
+                        {/* 2-Column Product Grid with Outer Style Frame */}
+                        <div className="grid grid-cols-2 gap-3 w-full">
+                          {/* Item #01 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
                                 編號 01
                               </span>
-                              <span className="px-2 py-0.5 bg-red-500/80 text-white font-mono font-bold text-[9px] rounded-md">
-                                模型盒損區
-                              </span>
                             </div>
-                            <span className="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                              ● 門市現貨
-                            </span>
-                          </div>
 
-                          {/* Image & Main Info */}
-                          <div className="flex gap-3 items-center">
-                            <div className="w-24 h-28 shrink-0 rounded-xl overflow-hidden border border-white/20 bg-black/40 relative shadow-inner group cursor-pointer">
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
                               <img
-                                src={TANJIRO_IMAGE_URL}
+                                src="https://drive.google.com/thumbnail?id=1VCojPkeNbYBYmwtpcG7upGY6-LXGjvSf&sz=w1000"
                                 alt="QP 鬼滅之刃 竈門炭治郎"
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 referrerPolicy="no-referrer"
                               />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                              <span className="absolute bottom-1 right-1 text-[8px] bg-black/70 text-amber-300 px-1 rounded font-mono">
-                                實物圖
-                              </span>
                             </div>
 
-                            <div className="flex-1 space-y-1.5 text-left">
-                              <h3 className="text-sm font-black text-white font-rounded leading-snug tracking-wide">
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
                                 QP 鬼滅之刃 竈門炭治郎
-                              </h3>
-                              <div className="text-[10px] text-amber-300/90 font-mono space-y-0.5">
-                                <div>品牌：BANPRESTO Qposket</div>
-                                <div>作品：鬼滅之刃 (Demon Slayer)</div>
-                                <div>規格：盒裝Q版姿態模型</div>
-                              </div>
-                              <div className="pt-1 flex items-center justify-between border-t border-white/10">
-                                <span className="text-[9px] text-white/50 font-mono">狀態：外盒損傷 / 本體全新</span>
                               </div>
                             </div>
                           </div>
-
-                          {/* Description */}
-                          <p className="text-[11px] text-white/70 leading-relaxed font-sans bg-white/[0.02] p-2 rounded-lg border border-white/5">
-                            【編號01】Q posket 鬼滅之刃 竈門炭治郎，經典黑綠棋盤格羽織與耳環造型，精緻眼神塗裝，外盒壓痕磨損出清特價。
-                          </p>
                         </div>
                       </div>
                     )}
