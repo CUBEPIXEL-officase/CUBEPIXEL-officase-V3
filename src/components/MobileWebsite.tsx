@@ -181,6 +181,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
   const [showReservationSubpage, setShowReservationSubpage] = useState(false);
   const [showCalendarSubpage, setShowCalendarSubpage] = useState(false);
   const [showIntroSubpage, setShowIntroSubpage] = useState(false);
+  const [showMerchSubpage, setShowMerchSubpage] = useState(false);
   const [showAppInstallSubpage, setShowAppInstallSubpage] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isStandalone, setIsStandalone] = useState(false);
@@ -660,6 +661,41 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   ))}
                 </div>
               </div>
+
+              {/* 3. 呼吸像素心條下方獨立按鈕：熱門商品 (Hot Products Independent Button) */}
+              <motion.button
+                onClick={() => setShowMerchSubpage(true)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.96 }}
+                className="w-full py-3 px-4 bg-gradient-to-r from-amber-500/15 via-rose-500/15 to-purple-500/15 hover:from-amber-500/25 hover:via-rose-500/25 hover:to-purple-500/25 border border-amber-500/30 hover:border-amber-400/60 rounded-2xl flex items-center justify-between cursor-pointer shadow-[0_0_20px_rgba(255,179,71,0.15)] transition-all duration-200 group relative overflow-hidden"
+              >
+                {/* Ambient glow & shine transition */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                <div className="flex items-center gap-3 z-10">
+                  <div className="p-2 bg-amber-500/20 rounded-xl flex items-center justify-center border border-amber-400/40 drop-shadow-[0_0_10px_rgba(255,179,71,0.6)]">
+                    <MobilePixelHeart color="#FFB347" size="sm" pulse />
+                  </div>
+                  <div className="flex flex-col items-start text-left">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black text-white tracking-widest font-rounded">
+                        熱門商品
+                      </span>
+                      <span className="text-[8px] px-1.5 py-0.5 bg-gradient-to-r from-red-500 to-amber-500 text-black font-black rounded-md tracking-wider font-mono animate-pulse">
+                        HOT
+                      </span>
+                    </div>
+                    <span className="text-[9px] text-amber-200/70 font-mono tracking-wider">
+                      CUBEPIXEL MERCH & GOODS
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-amber-300 z-10 group-hover:translate-x-1 transition-transform">
+                  <span>查看物販</span>
+                  <span className="text-xs">➔</span>
+                </div>
+              </motion.button>
             </div>
 
             {/* 3. 保留可愛字型 並將地址與電話留在最下面 (Borderless flat visual design) */}
@@ -1368,6 +1404,226 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
               <div className="w-full flex flex-col items-center gap-1 pt-1">
                 <div className="text-[8px] text-white/20 tracking-wide text-center">
                   紡塊像素 CubePixel_2026
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {showMerchSubpage && (
+          <motion.div
+            key="merch_subpage"
+            initial={{ opacity: 0, y: 150 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 150 }}
+            transition={{ type: "spring", damping: 25, stiffness: 180 }}
+            className="absolute inset-0 z-30 flex flex-col items-center justify-between p-4 bg-[#000611]/97 backdrop-blur-md w-full h-full"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)
+              `,
+              backgroundSize: `${GRID_SIZE}px ${GRID_SIZE}px`,
+            }}
+          >
+            {/* Top Back/Close bar */}
+            <div className="w-full flex justify-between items-center text-[9px] tracking-widest text-white/30 uppercase pt-2 pb-2 z-40 font-mono">
+              <button 
+                onClick={() => setShowMerchSubpage(false)}
+                className="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-bold tracking-widest cursor-pointer"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span>返回主頁</span>
+              </button>
+              <div>{currentTime}</div>
+            </div>
+
+            {/* Scrollable Container for Hot Products */}
+            <div className="flex-1 w-full overflow-y-auto py-4 px-2 my-auto flex flex-col items-center justify-start gap-4 scrollbar-thin scrollbar-thumb-white/10">
+              <div className="w-full max-w-sm sm:max-w-md text-center space-y-4">
+                
+                {/* Header Title */}
+                <div className="flex flex-col items-center mb-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full mb-2">
+                    <MobilePixelHeart color="#FFB347" size="xs" pulse />
+                    <span className="text-[10px] text-amber-300 font-mono font-bold tracking-wider">CUBEPIXEL MERCH STORE</span>
+                  </div>
+                  <h2 className="text-3xl font-black text-white tracking-[0.2em] italic drop-shadow-[0_0_20px_rgba(255,179,71,0.4)]">
+                    熱門商品
+                  </h2>
+                  <p className="text-[10px] text-white/50 font-mono mt-1 tracking-widest">
+                    紡塊像素 官方熱門物販與門市限定周邊
+                  </p>
+                </div>
+
+                {/* Merch List */}
+                <div className="space-y-3.5 text-left w-full">
+                  
+                  {/* Item 1: 紀念T恤 */}
+                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-amber-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-amber-400/50 transition-all shadow-[0_0_15px_rgba(255,179,71,0.08)]">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-black text-white font-rounded">
+                            紡塊像素 官方紀念T恤
+                          </span>
+                          <span className="text-[8px] px-1.5 py-0.5 bg-red-500 text-white font-black rounded font-mono">
+                            HOT 人氣王
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
+                          經典像素LOGO純棉T恤 (黑/白)
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-sm font-black text-amber-300 font-mono">
+                          NT$ 750
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
+                      重磅舒適純棉，胸前高精度像素LOGO刺繡，背後成員像素總動員圖樣，公演推活必備首選！
+                    </p>
+                  </div>
+
+                  {/* Item 2: 涼海璃壓克力立牌 */}
+                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-rose-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-rose-400/50 transition-all shadow-[0_0_15px_rgba(244,63,94,0.08)]">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-black text-white font-rounded">
+                            涼海璃 (Umiri) 壓克力立牌
+                          </span>
+                          <span className="text-[8px] px-1.5 py-0.5 bg-rose-500 text-white font-black rounded font-mono">
+                            店長精選
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
+                          居酒屋店長限定款 (15cm)
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-sm font-black text-rose-300 font-mono">
+                          NT$ 380
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
+                      高解析全彩雙面壓克力，附酸欠像素居酒屋專屬底座與涼海璃店長隨機手寫留言小卡乙張。
+                    </p>
+                  </div>
+
+                  {/* Item 3: 試營運徽章組 */}
+                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-yellow-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-yellow-400/50 transition-all shadow-[0_0_15px_rgba(234,179,8,0.08)]">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-black text-white font-rounded">
+                            試營運特別紀念徽章組
+                          </span>
+                          <span className="text-[8px] px-1.5 py-0.5 bg-amber-500 text-black font-black rounded font-mono">
+                            門市限定
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
+                          經典3入金屬馬口鐵徽章 (58mm)
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-sm font-black text-yellow-300 font-mono">
+                          NT$ 250
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
+                      收錄酸欠像素招牌、涼海璃店長Q版與像素心心經典LOGO，限定發售售完不補！
+                    </p>
+                  </div>
+
+                  {/* Item 4: 應援手燈 */}
+                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-emerald-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-emerald-400/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.08)]">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-black text-white font-rounded">
+                            Q-PIXEL 閃亮像素應援手燈
+                          </span>
+                          <span className="text-[8px] px-1.5 py-0.5 bg-emerald-500 text-black font-black rounded font-mono">
+                            公演必備
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
+                          8色可切換 官方現場應援棒
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-sm font-black text-emerald-300 font-mono">
+                          NT$ 550
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
+                      多段高亮發光模式，內建8種團員代表色切換，現場ライブ必備應援神器！
+                    </p>
+                  </div>
+
+                  {/* Item 5: 拍立得卡套 */}
+                  <div className="w-full bg-white/[0.03] backdrop-blur-md rounded-2xl p-4 border border-cyan-500/20 relative overflow-hidden flex flex-col gap-2 hover:border-cyan-400/50 transition-all shadow-[0_0_15px_rgba(6,182,212,0.08)]">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-black text-white font-rounded">
+                            拍立得卡套與生寫真集
+                          </span>
+                          <span className="text-[8px] px-1.5 py-0.5 bg-cyan-500 text-black font-black rounded font-mono">
+                            NEW 新品
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-white/50 font-mono block mt-0.5">
+                          復古像素相框 + 隨機生寫真
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-sm font-black text-cyan-300 font-mono">
+                          NT$ 320
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-white/70 leading-relaxed font-sans pt-1 border-t border-white/5">
+                      高質感透明拍立得保護套，隨機加贈團員生寫真乙張（有機會抽中親筆簽名隱藏版）！
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* Reservation / Purchase hint button */}
+                <div className="pt-2">
+                  <button
+                    onClick={() => {
+                      setShowMerchSubpage(false);
+                      setShowReservationSubpage(true);
+                    }}
+                    className="w-full py-3 bg-gradient-to-r from-amber-500 to-rose-500 text-black font-black text-xs rounded-xl shadow-[0_0_15px_rgba(255,179,71,0.3)] hover:brightness-110 active:scale-95 transition-all cursor-pointer font-rounded"
+                  >
+                    📍 前往實體門市預約選購
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Bottom Exit Button */}
+            <div className="w-full flex flex-col gap-2 max-w-sm sm:max-w-md px-4 mt-2">
+              <button 
+                onClick={() => setShowMerchSubpage(false)}
+                className="w-full py-3 bg-white/5 hover:bg-white/10 active:scale-95 text-white font-black text-xs tracking-widest uppercase rounded-xl transition-all duration-200 cursor-pointer pointer-events-auto font-mono"
+              >
+                關閉商品頁
+              </button>
+              
+              <div className="w-full flex flex-col items-center gap-1 pt-1">
+                <div className="text-[8px] text-white/20 tracking-wide text-center font-mono">
+                  紡塊像素 CUBEPIXEL MERCH • 保持你的可愛
                 </div>
               </div>
             </div>
