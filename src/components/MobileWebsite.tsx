@@ -1671,6 +1671,60 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                               </div>
                             </div>
                           </div>
+
+                          {/* Item #05 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
+                                編號 05
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1rhk557aWPUSp9TkYpugwcdfp5DXMn3A6&sz=w1000"
+                                alt="QP 阿拉丁 Jasmine公主"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                QP 阿拉丁 Jasmine公主
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Item #06 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-amber-500 text-black shadow-sm">
+                                編號 06
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=15mU_17FgwStjDrcOnv17mS1xssNTW6z6&sz=w1000"
+                                alt="QP 復仇者聯盟 洛基"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                QP 復仇者聯盟 洛基
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )}
