@@ -1463,6 +1463,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           { id: "model_box_damaged", name: "模型區(盒損)" },
                           { id: "model_unboxed_display", name: "模型區(拆擺)" },
                           { id: "defect_special", name: "瑕疵特惠區" },
+                          { id: "cultural_design", name: "文創小設計區(不補)" },
                         ].find(c => c.id === selectedMerchCategory)?.name || "商品清單")
                       : "熱門商品專區"}
                   </h2>
@@ -1508,6 +1509,17 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           icon: "⚠️",
                           count: "門市專區",
                           desc: "瑕疵釋出 / 優惠特價",
+                        },
+                        {
+                          id: "cultural_design",
+                          name: "文創小設計區(不補)",
+                          badge: "限量不補",
+                          badgeBg: "bg-purple-600/80 text-white",
+                          borderColor: "border-purple-500/40 hover:border-purple-400",
+                          glowColor: "shadow-[0_0_15px_rgba(168,85,247,0.2)]",
+                          icon: "🧧",
+                          count: "門市專區",
+                          desc: "原創設計 / 售完不補",
                         },
                       ].map((cat) => (
                         <motion.button
@@ -1848,6 +1860,33 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                               </div>
                             </div>
                           </div>
+
+                          {/* Item #03 (萬代系列) */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-blue-600 text-white border border-blue-400/40 shadow-sm">
+                                編號 03
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1W1iaxOPJ6rQ1uxIVOvR0M02y5CUGNgxw&sz=w1000"
+                                alt="萬代 一拳超人 地獄吹雪"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                萬代 一拳超人 地獄吹雪
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )}
@@ -2015,6 +2054,52 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                               </div>
                               <div className="text-[9px] font-bold text-amber-300/90 font-mono bg-amber-500/10 rounded py-0.5 px-1 inline-block border border-amber-500/20">
                                 ⚠️ 軟腳 已動正骨手術
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedMerchCategory === "cultural_design" && (
+                      <div className="space-y-3">
+                        <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-xl text-[10px] text-purple-300 font-mono">
+                          🧧 【文創小設計區(不補)】獨立原創設計週邊商品，限量發售、售完不再補貨。
+                        </div>
+
+                        {/* 2-Column Product Grid */}
+                        <div className="grid grid-cols-2 gap-3 w-full">
+                          {/* Item 淺灰紫01 */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-purple-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.2)] group">
+                            {/* Top Left Quantity Badge */}
+                            <span className="absolute top-2 left-2 text-[9px] font-black font-mono px-1.5 py-0.5 rounded-md bg-purple-600 text-white border border-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.5)] z-20 leading-none">
+                              剩 3 個
+                            </span>
+
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-purple-900/90 text-purple-200 border border-purple-400/40 shadow-sm">
+                                淺灰紫 01
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1EwJef-oxjKonLIZj1-iOBtXZEnzkH6MK&sz=w1000"
+                                alt="啊璃的袋袋小精靈紅包袋"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name & Quantity */}
+                            <div className="w-full text-center z-10 space-y-0.5">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                啊璃的袋袋小精靈紅包袋
+                              </div>
+                              <div className="text-[9px] font-bold text-purple-300/90 font-mono bg-purple-500/10 rounded py-0.5 px-1 inline-block border border-purple-500/20">
+                                數量：3個 (售完不補)
                               </div>
                             </div>
                           </div>
