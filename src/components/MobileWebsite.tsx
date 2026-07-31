@@ -2078,8 +2078,8 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
 
                             {/* Top Number */}
                             <div className="w-full flex justify-center z-10">
-                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-purple-900/90 text-purple-200 border border-purple-400/40 shadow-sm">
-                                淺灰紫 01
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-[#9B8CAE] text-slate-950 border border-[#C4B7D7] shadow-sm">
+                                編號 01
                               </span>
                             </div>
 
