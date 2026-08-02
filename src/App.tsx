@@ -16,6 +16,7 @@ const BannedListPage = React.lazy(() =>
 import { MobileWebsite } from './components/MobileWebsite';
 import { DarkRedSubPage } from './components/DarkRedSubPage';
 import { umiriPhotoBase64 as umiriOfficialPhoto } from './assets/umiriPhotoBase64';
+import { useLanguage } from './context/LanguageContext';
 
 const COLORS = [
   '#F08080', // 紅/淺珊瑚紅 (Light Coral)
@@ -1810,6 +1811,7 @@ const BroadcastStudioPage: React.FC<{
   );
 };
 export default function App() {
+  const { lang, toggleLanguage, t } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
   const [blocks, setBlocks] = useState<Block[]>([]);
   const [dimensions, setDimensions] = useState({ cols: 0, rows: 0 });
@@ -2255,6 +2257,23 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen w-full bg-[#001B3D] overflow-hidden flex items-center justify-center">
+      {/* Fixed Top-Right Language Toggle Button (Desktop & Mobile) */}
+      <div className="fixed top-4 right-6 z-[1000] pointer-events-auto">
+        <motion.button
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          onClick={toggleLanguage}
+          className="px-3.5 py-2 bg-slate-950/85 hover:bg-slate-900 border-2 border-cyan-400/60 hover:border-cyan-300 text-cyan-200 hover:text-white rounded-xl shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] font-mono font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer backdrop-blur-md"
+          title={lang === 'zh' ? '換成日文' : '換成中文'}
+        >
+          <span className="text-base sm:text-lg">🌐</span>
+          <span>{lang === 'zh' ? '換成日文' : '換成中文'}</span>
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">
+            {lang === 'zh' ? 'JP' : 'ZH'}
+          </span>
+        </motion.button>
+      </div>
+
       <AnimatePresence mode="wait">
         {gameState === 'umiri_special' ? (
           <UmiriSpecialPage key={`umiri_special-${selectedFighterId}`} fighterId={selectedFighterId} onBack={() => setGameState('next_page')} />
