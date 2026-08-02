@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Monitor, RefreshCw, ChevronLeft, AlertTriangle } from 'lucide-react';
 import { EventCalendar } from './EventCalendar';
 import { umiriPhotoBase64 as umiriOfficialPhoto } from '../assets/umiriPhotoBase64';
-import { useLanguage } from '../context/LanguageContext';
 
 const TANJIRO_IMAGE_URL = "/images/tanjiro_qposket.jpg";
 
@@ -175,7 +174,6 @@ const HEARTS_CONFIG = [
 ];
 
 export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
-  const { lang, toggleLanguage, t } = useLanguage();
   // Mobile-specific game state sequence to handle the transition
   const [localGameState, setLocalGameState] = useState<'idle' | 'forming' | 'formed' | 'dissolving' | 'next_page'>('idle');
   const [currentTime, setCurrentTime] = useState('');
@@ -562,23 +560,6 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
               backgroundSize: `${GRID_SIZE}px ${GRID_SIZE}px`,
             }}
           >
-            {/* Top-Right Language Toggle Button (Mobile) */}
-            <div className="absolute top-4 right-4 z-[60] pointer-events-auto">
-              <motion.button
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.92 }}
-                onClick={toggleLanguage}
-                className="px-2.5 py-1.5 bg-slate-900/90 hover:bg-slate-800 border-2 border-cyan-400/60 hover:border-cyan-300 text-cyan-200 rounded-xl shadow-[0_0_12px_rgba(34,211,238,0.35)] font-mono text-xs font-bold flex items-center gap-1.5 backdrop-blur-md cursor-pointer"
-                title={lang === 'zh' ? '換成日文' : '換成中文'}
-              >
-                <span className="text-sm">🌐</span>
-                <span>{lang === 'zh' ? '換成日文' : '換成中文'}</span>
-                <span className="text-[9px] px-1 py-0.2 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">
-                  {lang === 'zh' ? 'JP' : 'ZH'}
-                </span>
-              </motion.button>
-            </div>
-
             {/* Interactive Pixel Heart Buttons in Top-Left Corner */}
             <div className="absolute top-4 left-4 flex flex-col gap-3 z-30 pointer-events-auto">
               {/* Store Latest News (Red Heart) */}
@@ -587,7 +568,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 className="p-2.5 bg-red-500/10 hover:bg-red-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(240,128,128,0.5)]"
-                title={t("店面最新資訊")}
+                title="店面最新資訊"
               >
                 <MobilePixelHeart color="#F08080" size="lg" pulse />
               </motion.button>
@@ -598,7 +579,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 className="p-2.5 bg-amber-500/10 hover:bg-amber-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]"
-                title={t("社群預約功能")}
+                title="社群預約功能"
               >
                 <MobilePixelHeart color="#FFB347" size="lg" pulse />
               </motion.button>
@@ -609,7 +590,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 className="p-2.5 bg-yellow-500/10 hover:bg-yellow-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(234,179,8,0.5)]"
-                title={t("店鋪專用行事曆")}
+                title="店鋪專用行事曆"
               >
                 <MobilePixelHeart color="#FFFF00" size="lg" pulse />
               </motion.button>
@@ -620,7 +601,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 className="p-2.5 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(124,252,0,0.5)]"
-                title={t("角色介紹")}
+                title="角色介紹"
               >
                 <MobilePixelHeart color="#7CFC00" size="lg" pulse />
               </motion.button>
@@ -632,7 +613,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   whileHover={{ scale: 1.15 }}
                   whileTap={{ scale: 0.9 }}
                   className="p-2.5 bg-cyan-500/10 hover:bg-cyan-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(56,189,248,0.5)] animate-bounce"
-                  title={t("下載手機 App (PWA / APK)")}
+                  title="下載手機 App (PWA / APK)"
                 >
                   <MobilePixelDownload color="#38BDF8" size="lg" pulse />
                 </motion.button>
@@ -701,7 +682,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   <div className="flex flex-col items-start text-left">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-black text-white tracking-widest font-rounded">
-                        {t("熱門商品")}
+                        熱門商品
                       </span>
                       <span className="text-[8px] px-1.5 py-0.5 bg-gradient-to-r from-red-500 to-amber-500 text-black font-black rounded-md tracking-wider font-mono animate-pulse">
                         HOT
@@ -714,7 +695,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 </div>
 
                 <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-amber-300 z-10 group-hover:translate-x-1 transition-transform">
-                  <span>{t("查看物販", "グッズを見る")}</span>
+                  <span>查看物販</span>
                   <span className="text-xs">➔</span>
                 </div>
               </motion.button>
@@ -1461,7 +1442,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 className="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-bold tracking-widest cursor-pointer"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
-                <span>{selectedMerchCategory ? t("返回分類") : t("返回主頁")}</span>
+                <span>{selectedMerchCategory ? "返回分類" : "返回主頁"}</span>
               </button>
               <div>{currentTime}</div>
             </div>
@@ -1478,16 +1459,16 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black text-white tracking-[0.2em] italic drop-shadow-[0_0_20px_rgba(255,179,71,0.4)]">
                     {selectedMerchCategory 
-                      ? t([
+                      ? ([
                           { id: "model_box_damaged", name: "模型區(盒損)" },
                           { id: "model_unboxed_display", name: "模型區(拆擺)" },
                           { id: "defect_special", name: "瑕疵特惠區" },
                           { id: "cultural_design", name: "文創小設計區(不補)" },
                         ].find(c => c.id === selectedMerchCategory)?.name || "商品清單")
-                      : t("熱門商品專區")}
+                      : "熱門商品專區"}
                   </h2>
                   <p className="text-[10px] text-white/50 font-mono mt-0.5 tracking-widest">
-                    {selectedMerchCategory ? t("請點擊下方商品瀏覽詳情或門市預約") : t("請選擇商品分類區域進入觀看商品")}
+                    {selectedMerchCategory ? "請點擊下方商品瀏覽詳情或門市預約" : "請選擇商品分類區域進入觀看商品"}
                   </p>
                 </div>
 
@@ -1551,7 +1532,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           {/* Top Badge */}
                           <div className="w-full flex justify-center">
                             <span className={`text-[9px] font-black font-mono px-2 py-0.5 rounded-full ${cat.badgeBg} shadow-sm`}>
-                              {t(cat.badge)}
+                              {cat.badge}
                             </span>
                           </div>
 
@@ -1563,10 +1544,10 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           {/* Bottom Info */}
                           <div className="w-full text-center space-y-0.5">
                             <div className="text-xs font-black text-white font-rounded leading-tight tracking-wider">
-                              {t(cat.name)}
+                              {cat.name}
                             </div>
                             <div className="text-[9px] text-amber-300/80 font-mono">
-                              {t(cat.desc)}
+                              {cat.desc}
                             </div>
                           </div>
 
