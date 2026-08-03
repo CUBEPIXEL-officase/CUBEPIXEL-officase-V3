@@ -780,10 +780,11 @@ const SpecialThanksPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   );
 };
 
-const UmiriSpecialPage: React.FC<{ fighterId: number; onBack: () => void }> = ({ fighterId, onBack }) => {
+const UmiriSpecialPage: React.FC<{ fighterId: number; onBack: () => void; onSecretUnlock?: () => void }> = ({ fighterId, onBack, onSecretUnlock }) => {
   const activeFighter = FIGHTERS.find(f => f.id === fighterId) || FIGHTERS[0];
   const code = getFighterCode(fighterId);
   const [isDraggingSheep, setIsDraggingSheep] = useState(false);
+  const [sheepClickCount, setSheepClickCount] = useState(0);
 
   // Load custom Snoozing Hatsune Miku wait cursor for Umiri's special page only
   useEffect(() => {
@@ -1182,7 +1183,18 @@ const UmiriSpecialPage: React.FC<{ fighterId: number; onBack: () => void }> = ({
             whileTap={{ scale: 0.9, rotate: -5 }}
             onDragStart={() => setIsDraggingSheep(true)}
             onDragEnd={() => setIsDraggingSheep(false)}
-            className="absolute top-0 left-0 z-[1020] sheep-sticker-container"
+            onClick={() => {
+              const nextCount = sheepClickCount + 1;
+              if (nextCount >= 7) {
+                setSheepClickCount(0);
+                if (onSecretUnlock) {
+                  onSecretUnlock();
+                }
+              } else {
+                setSheepClickCount(nextCount);
+              }
+            }}
+            className="absolute top-0 left-0 z-[1020] sheep-sticker-container cursor-pointer"
           >
             <div className="relative group">
               <div className="absolute -inset-2 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -1192,8 +1204,8 @@ const UmiriSpecialPage: React.FC<{ fighterId: number; onBack: () => void }> = ({
                 className="w-64 h-64 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute -top-4 -right-4 bg-white text-[#4C5E6E] text-[10px] font-black px-2 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-tighter">
-                Drag Me!
+              <div className="absolute -top-4 -right-4 bg-slate-900 text-slate-200 border border-slate-500/50 text-[10px] font-black px-2.5 py-1 rounded-full shadow-lg opacity-100 uppercase tracking-tighter">
+                {sheepClickCount > 0 ? `🐑 ${sheepClickCount}/7` : 'Drag / Click Me!'}
               </div>
             </div>
           </motion.div>
@@ -2257,7 +2269,15 @@ export default function App() {
     <div className="relative min-h-screen w-full bg-[#001B3D] overflow-hidden flex items-center justify-center">
       <AnimatePresence mode="wait">
         {gameState === 'umiri_special' ? (
-          <UmiriSpecialPage key={`umiri_special-${selectedFighterId}`} fighterId={selectedFighterId} onBack={() => setGameState('next_page')} />
+          <UmiriSpecialPage 
+            key={`umiri_special-${selectedFighterId}`} 
+            fighterId={selectedFighterId} 
+            onBack={() => setGameState('next_page')} 
+            onSecretUnlock={() => {
+              setGameState('next_page');
+              setActiveSubPage('disabled');
+            }}
+          />
         ) : gameState === 'banned_list' ? (
           <React.Suspense fallback={null}>
             <BannedListPage key="banned_list" onBack={() => setGameState('next_page')} />
@@ -2351,23 +2371,30 @@ export default function App() {
               {/* Top-Left Navigation Overlay - Bound to Banner */}
               <div className="absolute top-4 left-80 z-50 flex flex-col gap-6 pointer-events-auto">
                 <div className="flex gap-6">
-                  {HEARTS.map((heart) => (
-                    <PixelHeart 
-                      key={heart.id}
-                      color={heart.color}
-                      label={heart.label}
-                      size="sm"
-                      isActive={activeSubPage === heart.id}
-                      disabled={(heart as any).disabled}
-                      onClick={() => {
-                        if (heart.id === 'visual') {
-                          setGameState('special_thanks');
-                        } else {
-                          setActiveSubPage(heart.id);
-                        }
-                      }}
-                    />
-                  ))}
+                  {HEARTS.map((heart) => {
+                    const isSecretHeartPublished = false; // 預設隱藏發布，灰色心不可點擊
+                    const isDisabled = heart.id === 'disabled' ? !isSecretHeartPublished : (heart as any).disabled;
+                    return (
+                      <PixelHeart 
+                        key={heart.id}
+                        color={heart.color}
+                        label={heart.label}
+                        size="sm"
+                        isActive={activeSubPage === heart.id}
+                        disabled={isDisabled}
+                        onClick={() => {
+                          if (heart.id === 'disabled' && !isSecretHeartPublished) {
+                            return;
+                          }
+                          if (heart.id === 'visual') {
+                            setGameState('special_thanks');
+                          } else {
+                            setActiveSubPage(heart.id);
+                          }
+                        }}
+                      />
+                    );
+                  })}
                 </div>
               </div>
 
@@ -3380,6 +3407,49 @@ export default function App() {
                             </motion.div>
                           </div>
                         </div>
+                      </div>
+                    ) : activeSubPage === 'disabled' ? (
+                      <div className="w-full min-h-[calc(100vh-220px)] flex flex-col items-center justify-center p-4 md:p-8 relative z-10">
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4 }}
+                          className="max-w-2xl w-full bg-slate-900/95 border-2 border-slate-500/40 rounded-3xl p-6 md:p-8 backdrop-blur-xl shadow-[0_0_50px_rgba(76,94,110,0.3)] flex flex-col items-center text-center space-y-6"
+                        >
+                          {/* Header Tag */}
+                          <div className="flex items-center gap-2 px-4 py-1.5 bg-slate-800/90 border border-slate-500/40 rounded-full text-slate-300 text-xs font-mono font-bold tracking-widest shadow-sm">
+                            <span>🔒 SECRET UNLOCKED // 隱藏內容</span>
+                          </div>
+
+                          {/* Image Container */}
+                          <div className="w-full rounded-2xl overflow-hidden border border-slate-600/30 bg-black/80 shadow-2xl relative group">
+                            <img 
+                              src="https://drive.google.com/thumbnail?id=16pSSUb3kREFMRTd08o-97CZ-bSvH-Ulm&sz=w1000"
+                              alt="隱藏圖片"
+                              className="w-full max-h-[60vh] object-contain transition-transform duration-500 group-hover:scale-105"
+                              referrerPolicy="no-referrer"
+                            />
+                          </div>
+
+                          {/* Action Buttons */}
+                          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                            <a 
+                              href="https://drive.google.com/file/d/16pSSUb3kREFMRTd08o-97CZ-bSvH-Ulm/view?usp=sharing"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-5 py-2.5 bg-slate-700/80 hover:bg-slate-600 text-white rounded-xl text-xs font-bold font-mono transition-all border border-slate-500/30 shadow-md flex items-center gap-2"
+                            >
+                              <span>🖼️</span>
+                              <span>開啟原圖連結</span>
+                            </a>
+                            <button
+                              onClick={() => setActiveSubPage(null)}
+                              className="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold font-mono transition-all border border-white/20"
+                            >
+                              ✕ 關閉頁面
+                            </button>
+                          </div>
+                        </motion.div>
                       </div>
                     ) : (
                       <div className="absolute inset-y-0 left-0 flex flex-col justify-center px-20 max-w-5xl">

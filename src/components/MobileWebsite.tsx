@@ -186,6 +186,9 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
   const [showMerchSubpage, setShowMerchSubpage] = useState(false);
   const [selectedMerchCategory, setSelectedMerchCategory] = useState<string | null>(null);
   const [showAppInstallSubpage, setShowAppInstallSubpage] = useState(false);
+  const [showSecretSubpage, setShowSecretSubpage] = useState(false);
+  const [mobileSheepClickCount, setMobileSheepClickCount] = useState(0);
+  const isSecretHeartPublished = false; // 預設隱藏發布，灰色心不可點擊
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isStandalone, setIsStandalone] = useState(false);
   const [selectedMobileFighter, setSelectedMobileFighter] = useState<any | null>(null);
@@ -604,6 +607,21 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 title="角色介紹"
               >
                 <MobilePixelHeart color="#7CFC00" size="lg" pulse />
+              </motion.button>
+
+              {/* Disabled / Secret (Gray Heart) */}
+              <motion.button 
+                onClick={() => {
+                  if (isSecretHeartPublished) {
+                    setShowSecretSubpage(true);
+                  }
+                }}
+                whileHover={isSecretHeartPublished ? { scale: 1.15 } : {}}
+                whileTap={isSecretHeartPublished ? { scale: 0.9 } : {}}
+                className={`p-2.5 bg-slate-500/10 rounded-2xl transition-all duration-200 flex items-center justify-center drop-shadow-[0_0_12px_rgba(76,94,110,0.5)] ${isSecretHeartPublished ? 'cursor-pointer hover:bg-slate-500/20' : 'cursor-not-allowed opacity-40'}`}
+                title={isSecretHeartPublished ? "神秘專區" : "尚未開放"}
+              >
+                <MobilePixelHeart color="#4C5E6E" size="lg" pulse={isSecretHeartPublished} />
               </motion.button>
 
               {/* Download App / APK Install (Below Green Heart) */}
@@ -1385,6 +1403,42 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                             </a>
                           </div>
                         </div>
+
+                        {/* Floating Sheep Sticker for Suzumi Uri Secret Trigger */}
+                        {(selectedMobileFighter.enName === 'SUZUMI RII' || selectedMobileFighter.name?.includes('涼海')) && (
+                          <div className="pt-4 border-t border-white/10 flex flex-col items-center justify-center space-y-2">
+                            <motion.div
+                              whileHover={{ scale: 1.08, rotate: 4 }}
+                              whileTap={{ scale: 0.92, rotate: -4 }}
+                              onClick={() => {
+                                const nextCount = mobileSheepClickCount + 1;
+                                if (nextCount >= 7) {
+                                  setMobileSheepClickCount(0);
+                                  setSelectedMobileFighter(null);
+                                  setShowIntroSubpage(false);
+                                  setShowSecretSubpage(true);
+                                } else {
+                                  setMobileSheepClickCount(nextCount);
+                                }
+                              }}
+                              className="relative w-32 h-32 cursor-pointer select-none group"
+                            >
+                              <div className="absolute -inset-2 bg-slate-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                              <img 
+                                src="https://lh3.googleusercontent.com/d/1Atub1Buz03kfpOBXkTmpHEG6ySWRVoYl" 
+                                alt="Sheep Sticker"
+                                className="w-full h-full object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+                                referrerPolicy="no-referrer"
+                              />
+                              <div className="absolute -top-1 -right-1 bg-slate-800 text-slate-200 border border-slate-500/50 text-[9px] font-black px-2 py-0.5 rounded-full shadow-lg">
+                                {mobileSheepClickCount > 0 ? `🐑 ${mobileSheepClickCount}/7` : '點擊羊羊'}
+                              </div>
+                            </motion.div>
+                            <div className="text-[9px] text-white/40 font-mono tracking-wider text-center">
+                              涼海璃專屬小羊 (連續點擊 7 次開啟隱藏頁面)
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                   )}
@@ -2311,6 +2365,70 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   紡塊像素 CUBEPIXEL • 保持你的可愛
                 </div>
               </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Secret Heart Subpage Modal */}
+        {showSecretSubpage && (
+          <motion.div
+            key="secret_subpage"
+            initial={{ opacity: 0, y: 150 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 150 }}
+            transition={{ type: "spring", damping: 25, stiffness: 180 }}
+            className="absolute inset-0 z-50 flex flex-col items-center justify-between p-4 bg-[#0a0f1d]/98 backdrop-blur-xl w-full h-full"
+          >
+            {/* Top Back/Close bar */}
+            <div className="w-full flex justify-between items-center text-[9px] tracking-widest text-white/40 uppercase pt-2 pb-2 z-40 font-mono border-b border-slate-700/50">
+              <button 
+                onClick={() => setShowSecretSubpage(false)}
+                className="flex items-center gap-1 text-slate-300 hover:text-white font-bold tracking-widest cursor-pointer"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span>返回</span>
+              </button>
+              <div className="flex items-center gap-1.5 text-slate-300">
+                <MobilePixelHeart color="#4C5E6E" size="xs" pulse />
+                <span>SECRET MODULE</span>
+              </div>
+            </div>
+
+            {/* Scrollable Content Container */}
+            <div className="flex-1 w-full overflow-y-auto py-4 px-2 my-auto flex flex-col items-center justify-center gap-4">
+              <div className="w-full max-w-sm text-center space-y-4">
+                <div className="inline-flex items-center gap-2 py-1.5 px-3 bg-slate-800/90 border border-slate-600/50 rounded-full text-slate-200 text-[10px] font-mono font-bold tracking-widest shadow-md">
+                  <span>🔒 SECRET UNLOCKED // 隱藏內容</span>
+                </div>
+
+                <div className="w-full rounded-2xl overflow-hidden border border-slate-600/30 bg-black/80 shadow-[0_0_30px_rgba(76,94,110,0.3)] relative group">
+                  <img 
+                    src="https://drive.google.com/thumbnail?id=16pSSUb3kREFMRTd08o-97CZ-bSvH-Ulm&sz=w1000"
+                    alt="隱藏圖片"
+                    className="w-full h-auto max-h-[55vh] object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+
+                <a 
+                  href="https://drive.google.com/file/d/16pSSUb3kREFMRTd08o-97CZ-bSvH-Ulm/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 bg-slate-700/80 hover:bg-slate-600 text-white rounded-xl text-xs font-bold font-mono transition-all border border-slate-500/40 block text-center shadow-md"
+                >
+                  🖼️ 開啟 Google Drive 原圖連結
+                </a>
+              </div>
+            </div>
+
+            {/* Bottom Button to exit */}
+            <div className="w-full flex flex-col gap-2 max-w-sm px-4 mt-2">
+              <button 
+                onClick={() => setShowSecretSubpage(false)}
+                className="w-full py-3 bg-white/5 hover:bg-white/10 active:scale-95 text-white font-black text-xs tracking-widest uppercase rounded-xl transition-all duration-200 cursor-pointer pointer-events-auto"
+              >
+                關閉隱藏頁面
+              </button>
             </div>
           </motion.div>
         )}
