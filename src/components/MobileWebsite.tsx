@@ -2070,6 +2070,33 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                               </div>
                             </div>
                           </div>
+
+                          {/* Item 藍03 (萬代系列) */}
+                          <div className="aspect-[3/4] w-full rounded-2xl border-2 border-red-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.2)] group">
+                            {/* Top Number */}
+                            <div className="w-full flex justify-center z-10">
+                              <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-blue-600 text-white border border-blue-400/40 shadow-sm">
+                                編號 03
+                              </span>
+                            </div>
+
+                            {/* Product Image */}
+                            <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative">
+                              <img
+                                src="https://drive.google.com/thumbnail?id=1fgAUhtiifwNOrQWi_s_hWHPH65DcqqnY&sz=w1000"
+                                alt="萬代 海賊王 魯夫"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+
+                            {/* Name Only */}
+                            <div className="w-full text-center z-10">
+                              <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                                萬代 海賊王 魯夫
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )}
