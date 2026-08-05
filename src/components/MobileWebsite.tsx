@@ -6,7 +6,7 @@ import { umiriPhotoBase64 as umiriOfficialPhoto } from '../assets/umiriPhotoBase
 
 const TANJIRO_IMAGE_URL = "/images/tanjiro_qposket.jpg";
 
-const NEW_LOGO_URL = "https://drive.google.com/thumbnail?id=1yqTzowdnAcZTofISD4xSGTz-GigyR_Ma&sz=w1000";
+const NEW_LOGO_URL = "https://drive.google.com/thumbnail?id=1HvP72IEkODWDk29WboH2lHwIq8bvNEZ-&sz=w1000";
 
 const COLORS = [
   '#F08080', // 紅/淺珊瑚紅 (Light Coral)
