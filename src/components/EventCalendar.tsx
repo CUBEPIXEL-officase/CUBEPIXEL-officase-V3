@@ -147,6 +147,18 @@ const EVENTS: Record<string, CalendarEvent | CalendarEvent[]> = {
       subtitle: 'Izakaya Closed (Temporary Suspension)',
       category: 'other',
     }
+  ],
+  '2026-08-10': [
+    {
+      title: '涼海璃請假',
+      subtitle: 'Umiri on Leave (Member Absence)',
+      category: 'leave',
+    },
+    {
+      title: '居酒屋暫停營業',
+      subtitle: 'Izakaya Closed (Temporary Suspension)',
+      category: 'other',
+    }
   ]
 };
 

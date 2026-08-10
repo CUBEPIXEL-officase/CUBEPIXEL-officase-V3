@@ -812,6 +812,41 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
 
                 {/* News List Cards - Desktop Style Adaptations for Mobile */}
                 <div className="space-y-4 text-left w-full">
+                  {/* News Card: 8月10日 涼海璃請假與居酒屋暫停營業通知 */}
+                  <div className="w-full bg-black/40 backdrop-blur-md rounded-2xl p-4 border-[0.5px] border-white/10 relative overflow-hidden flex flex-col items-start justify-center text-left hover:border-[#D1B3FF]/30 transition-all duration-300 shadow-lg">
+                    <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t-[0.5px] border-l-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t-[0.5px] border-r-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b-[0.5px] border-l-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b-[0.5px] border-r-[0.5px] border-[#D1B3FF]" />
+                    
+                    <div className="flex flex-wrap items-center justify-between w-full gap-2 mb-3 pb-2 border-b border-white/5">
+                      <div className="flex items-center gap-2">
+                        <span className="inline-block px-2 py-0.5 text-[10px] font-bold bg-[#D1B3FF]/10 text-[#D1B3FF] border border-[#D1B3FF]/30 rounded font-pixel uppercase tracking-widest">
+                          請假與公休
+                        </span>
+                        <span className="text-xs font-mono text-white/40">2026.08.10</span>
+                      </div>
+                      <span className="text-[10px] font-mono text-white/20 select-none">NOTICE ID: #006</span>
+                    </div>
+
+                    <h3 className="text-base font-black text-white mb-2 tracking-wider hover:text-[#D1B3FF] transition-colors">
+                      【重要通知】8月10日 涼海璃請假與居酒屋暫停營業通知 🌸
+                    </h3>
+                    
+                    <p className="text-xs text-white/80 leading-relaxed font-mono font-medium">
+                      團長 <span className="text-[#D1B3FF] font-bold">涼海璃</span> 於今日（<span className="text-amber-400 font-bold">8月10日</span>）請假一天，居酒屋同步 <span className="text-amber-400 font-bold">暫停營業一天</span>。
+                      <span className="text-[11px] text-white/60 block mt-1">
+                        造成不便敬請見諒，感謝大家的理解與體諒！
+                      </span>
+                    </p>
+
+                    <div className="mt-3 pt-2 border-t border-white/5 flex items-center justify-between w-full">
+                      <p className="text-[10px] text-white/40 font-mono">
+                        祝大家有美好的一天，期待明日與大家再次相見！
+                      </p>
+                      <div className="w-1.5 h-1.5 bg-[#D1B3FF] rounded-full animate-pulse" />
+                    </div>
+                  </div>
                   {/* News Card: 出禁公告 (Deep Wine Red Theme) */}
                   <div className="w-full bg-[#24060B]/80 backdrop-blur-md rounded-2xl p-4 border-[0.5px] border-[#800A1D] relative overflow-hidden flex flex-col items-start justify-center text-left hover:border-[#FF4D6D]/50 transition-all duration-300 shadow-[0_0_20px_rgba(128,10,29,0.25)]">
                     <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t-[0.5px] border-l-[0.5px] border-[#FF4D6D]" />

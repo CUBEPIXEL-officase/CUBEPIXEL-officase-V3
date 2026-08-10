@@ -3544,6 +3544,46 @@ export default function App() {
 
                 {/* News List - Main Page (Featured 2-Block Size Pinned Notice & Leave Notice) */}
                 <div className="flex flex-col gap-8 w-full max-w-4xl">
+                  {/* News Card 0: 8月10日 涼海璃請假與居酒屋暫停營業通知 */}
+                  <div className="w-full bg-black/30 backdrop-blur-md rounded-2xl py-12 px-10 md:py-14 md:px-12 border-[0.5px] border-white/10 relative overflow-hidden flex flex-col items-start justify-center text-left hover:border-[#D1B3FF]/30 transition-all duration-300">
+                    <div className="absolute top-0 left-0 w-3 h-3 border-t-[0.5px] border-l-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute top-0 right-0 w-3 h-3 border-t-[0.5px] border-r-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-[0.5px] border-l-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-[0.5px] border-r-[0.5px] border-[#D1B3FF]" />
+                    
+                    <div className="flex flex-wrap items-center justify-between w-full gap-4 mb-6 pb-4 border-b border-white/5">
+                      <div className="flex items-center gap-3">
+                        <span className="inline-block px-2.5 py-1 text-xs font-bold bg-[#D1B3FF]/10 text-[#D1B3FF] border border-[#D1B3FF]/30 rounded font-pixel uppercase tracking-widest">
+                          請假與公休
+                        </span>
+                        <span className="text-sm font-mono text-white/40">2026.08.10</span>
+                      </div>
+                      <span className="text-xs font-mono text-white/20 select-none">NOTICE ID: #006</span>
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-4 tracking-wider hover:text-[#D1B3FF] transition-colors">
+                      【重要通知】8月10日 涼海璃請假與居酒屋暫停營業通知 🌸
+                    </h3>
+                    
+                    <p className="text-lg md:text-xl text-white/80 leading-relaxed font-mono font-medium">
+                      親愛的各位玩家與顧客：
+                      <br />
+                      團長 <span className="text-[#D1B3FF] font-bold">涼海璃</span> 於今日（<span className="text-amber-400 font-bold">8月10日</span>）請假一天，
+                      <br />
+                      酸欠像素偶像居酒屋同步 <span className="text-amber-400 font-bold">暫停營業一天</span>。
+                      <span className="text-base md:text-lg text-white/60 block mt-2">
+                        造成不便敬請見諒，感謝大家的理解與體諒！
+                      </span>
+                    </p>
+
+                    <div className="mt-8 flex items-center justify-between w-full">
+                      <p className="text-sm text-white/40 font-mono">
+                        祝大家有美好的一天，期待明日與大家再次相見！
+                      </p>
+                      <div className="w-2 h-2 bg-[#D1B3FF] rounded-full animate-pulse" />
+                    </div>
+                  </div>
+
                   {/* News Card 1: 出禁公告 (Featured / 2-Block Enlarge Size / Deep Wine Red Theme) */}
                   <div className="w-full bg-[#24060B]/90 backdrop-blur-md rounded-3xl py-14 px-10 md:py-16 md:px-14 border-2 border-[#800A1D] relative overflow-hidden flex flex-col items-start justify-center text-left hover:border-[#FF4D6D] transition-all duration-300 shadow-[0_0_50px_rgba(128,10,29,0.35)] min-h-[480px]">
                     <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#FF4D6D]" />
@@ -3696,6 +3736,46 @@ export default function App() {
 
                 {/* All Posts Container including earliest 試營運通知 */}
                 <div className="flex flex-col gap-8 w-full max-w-4xl pb-16">
+                  {/* News Card: 8月10日 涼海璃請假與居酒屋暫停營業通知 */}
+                  <div className="w-full bg-black/30 backdrop-blur-md rounded-2xl py-12 px-10 md:py-14 md:px-12 border-[0.5px] border-white/10 relative overflow-hidden flex flex-col items-start justify-center text-left hover:border-[#D1B3FF]/30 transition-all duration-300">
+                    <div className="absolute top-0 left-0 w-3 h-3 border-t-[0.5px] border-l-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute top-0 right-0 w-3 h-3 border-t-[0.5px] border-r-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-[0.5px] border-l-[0.5px] border-[#D1B3FF]" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-[0.5px] border-r-[0.5px] border-[#D1B3FF]" />
+                    
+                    <div className="flex flex-wrap items-center justify-between w-full gap-4 mb-6 pb-4 border-b border-white/5">
+                      <div className="flex items-center gap-3">
+                        <span className="inline-block px-2.5 py-1 text-xs font-bold bg-[#D1B3FF]/10 text-[#D1B3FF] border border-[#D1B3FF]/30 rounded font-pixel uppercase tracking-widest">
+                          請假與公休
+                        </span>
+                        <span className="text-sm font-mono text-white/40">2026.08.10</span>
+                      </div>
+                      <span className="text-xs font-mono text-white/20 select-none">NOTICE ID: #006</span>
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-4 tracking-wider hover:text-[#D1B3FF] transition-colors">
+                      【重要通知】8月10日 涼海璃請假與居酒屋暫停營業通知 🌸
+                    </h3>
+                    
+                    <p className="text-lg md:text-xl text-white/80 leading-relaxed font-mono font-medium">
+                      親愛的各位玩家與顧客：
+                      <br />
+                      團長 <span className="text-[#D1B3FF] font-bold">涼海璃</span> 於今日（<span className="text-amber-400 font-bold">8月10日</span>）請假一天，
+                      <br />
+                      酸欠像素偶像居酒屋同步 <span className="text-amber-400 font-bold">暫停營業一天</span>。
+                      <span className="text-base md:text-lg text-white/60 block mt-2">
+                        造成不便敬請見諒，感謝大家的理解與體諒！
+                      </span>
+                    </p>
+
+                    <div className="mt-8 flex items-center justify-between w-full">
+                      <p className="text-sm text-white/40 font-mono">
+                        祝大家有美好的一天，期待明日與大家再次相見！
+                      </p>
+                      <div className="w-2 h-2 bg-[#D1B3FF] rounded-full animate-pulse" />
+                    </div>
+                  </div>
+
                   {/* News Card: 出禁公告 (Pinned / Deep Wine Red) */}
                   <div className="w-full bg-[#24060B]/85 backdrop-blur-md rounded-2xl py-12 px-10 md:py-14 md:px-12 border-[0.5px] border-[#800A1D] relative overflow-hidden flex flex-col items-start justify-center text-left hover:border-[#FF4D6D] transition-all duration-300 shadow-[0_0_35px_rgba(128,10,29,0.3)]">
                     <div className="absolute top-0 left-0 w-3 h-3 border-t-[0.5px] border-l-[0.5px] border-[#FF4D6D]" />
