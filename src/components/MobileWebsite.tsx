@@ -1671,6 +1671,33 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                           </div>
                         </div>
                       </div>
+
+                      {/* 外區商品 Item 綠03 */}
+                      <div className="aspect-[3/4] w-full rounded-2xl border-2 border-emerald-500/40 bg-white/[0.04] backdrop-blur-md p-2.5 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.2)] group">
+                        {/* Top Number */}
+                        <div className="w-full flex justify-center z-10">
+                          <span className="text-[10px] font-black font-mono px-2 py-0.5 rounded-full bg-emerald-600 text-white border border-emerald-400/40 shadow-sm">
+                            編號 03
+                          </span>
+                        </div>
+
+                        {/* Product Image */}
+                        <div className="w-full flex-1 my-1.5 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative flex items-center justify-center">
+                          <img
+                            src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80"
+                            alt="二手衣物自選"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+
+                        {/* Name Only */}
+                        <div className="w-full text-center z-10">
+                          <div className="text-xs font-black text-white font-rounded leading-tight line-clamp-2">
+                            二手衣物自選
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="p-3 bg-white/[0.02] border border-white/10 rounded-2xl text-[10px] text-white/50 font-mono text-center">
