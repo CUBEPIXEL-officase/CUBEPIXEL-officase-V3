@@ -719,9 +719,9 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
               </motion.button>
             </div>
 
-            {/* 3. 保留可愛字型 並將地址與電話留在最下面 (Borderless flat visual design) */}
+            {/* 3. 保留可愛字型 並將地址、電話與營業時間留在最下面 (Borderless flat visual design) */}
             <div className="w-full max-w-sm sm:max-w-md bg-white/[0.01] rounded-2xl p-4 mb-3 space-y-1.5 relative">
-              <div className="space-y-1 text-left text-[11px] text-white/80 font-mono">
+              <div className="space-y-1.5 text-left text-[11px] text-white/80 font-mono">
                 <p className="flex justify-between items-center">
                   <span className="text-white/45 font-rounded text-[10px]">📍 實體地址:</span>
                   <span className="font-bold text-amber-300">福和路120號之2</span>
@@ -729,6 +729,10 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 <p className="flex justify-between items-center">
                   <span className="text-white/45 font-rounded text-[10px]">📞 聯絡電話:</span>
                   <span className="font-bold text-[#D1B3FF]">02-8925-2329</span>
+                </p>
+                <p className="flex justify-between items-center gap-2 pt-0.5 border-t border-white/5">
+                  <span className="text-white/45 font-rounded text-[10px] whitespace-nowrap">⏰ 營業時間:</span>
+                  <span className="font-bold text-emerald-400 text-right text-[10px] sm:text-[11px]">營業時間一切依照店內公告為基準</span>
                 </p>
               </div>
             </div>
