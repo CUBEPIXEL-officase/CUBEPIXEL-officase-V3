@@ -701,7 +701,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 </div>
               </div>
 
-              {/* 3. 限時公開專區：涼海生日會限定 HAPPY BIRすうDAY 拼貼桌布 (Above Merch Button, completely hidden when expired) */}
+              {/* 3. 限時公開專區：涼海生日會 限定桌布 (Above Merch Button, completely hidden when expired) */}
               {!isBirthdayWallpaperExpired && (
                 <motion.button
                   onClick={() => setShowBirthdayWallpaperSubpage(true)}
@@ -719,24 +719,24 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                     <div className="flex flex-col items-start text-left">
                       <div className="flex items-center gap-1.5">
                         <span className="text-xs font-black text-white tracking-wider font-rounded">
-                          涼海生日會限定
+                          涼海生日會
                         </span>
                         <span className={`text-[8px] px-1.5 py-0.5 ${
                           isBirthdayWallpaperUnlocked 
                             ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white animate-pulse' 
                             : 'bg-slate-800 text-pink-300 border border-pink-500/40'
                         } font-black rounded-md tracking-wider font-mono`}>
-                          {isBirthdayWallpaperUnlocked ? '限時開放中' : '預覽中 (8/21 18:00開放)'}
+                          {isBirthdayWallpaperUnlocked ? '限時開放中' : '8/21 18:00開放'}
                         </span>
                       </div>
-                      <span className="text-[9px] text-pink-200/90 font-mono tracking-wider font-bold">
-                        HAPPY BIRすうDAY 拼貼桌布
+                      <span className="text-[10px] text-pink-200/90 font-mono tracking-wider font-bold">
+                        限定桌布 • HAPPY BIRすうDAY
                       </span>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-pink-300 z-10 group-hover:translate-x-1 transition-transform">
-                    <span>{isBirthdayWallpaperUnlocked ? '立即下載' : '查看預覽'}</span>
+                    <span>{isBirthdayWallpaperUnlocked ? '立即下載' : '查看'}</span>
                     <span className="text-xs">➔</span>
                   </div>
                 </motion.button>
