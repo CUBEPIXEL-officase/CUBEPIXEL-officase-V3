@@ -186,6 +186,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
   const [showMerchSubpage, setShowMerchSubpage] = useState(false);
   const [selectedMerchCategory, setSelectedMerchCategory] = useState<string | null>(null);
   const [showAppInstallSubpage, setShowAppInstallSubpage] = useState(false);
+  const [showBirthdayWallpaperSubpage, setShowBirthdayWallpaperSubpage] = useState(false);
   const [showSecretSubpage, setShowSecretSubpage] = useState(false);
   const [mobileSheepClickCount, setMobileSheepClickCount] = useState(0);
   const isSecretHeartPublished = false; // 預設隱藏發布，灰色心不可點擊
@@ -683,7 +684,42 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 </div>
               </div>
 
-              {/* 3. 呼吸像素心條下方獨立按鈕：熱門商品 (Hot Products Independent Button) */}
+              {/* 3. 限時公開專區：涼海生日會限定 HAPPY BIRすうDAY 拼貼桌布下載區 (Above Merch Button) */}
+              <motion.button
+                onClick={() => setShowBirthdayWallpaperSubpage(true)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.96 }}
+                className="w-full py-3 px-4 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-indigo-500/20 hover:from-pink-500/30 hover:via-purple-500/30 hover:to-indigo-500/30 border border-pink-400/40 hover:border-pink-300 rounded-2xl flex items-center justify-between cursor-pointer shadow-[0_0_25px_rgba(244,114,182,0.25)] transition-all duration-200 group relative overflow-hidden"
+              >
+                {/* Ambient glow & shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                <div className="flex items-center gap-3 z-10">
+                  <div className="p-2 bg-pink-500/25 rounded-xl flex items-center justify-center border border-pink-300/40 drop-shadow-[0_0_10px_rgba(244,114,182,0.7)] text-base">
+                    🎂
+                  </div>
+                  <div className="flex flex-col items-start text-left">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs font-black text-white tracking-wider font-rounded">
+                        涼海生日會限定
+                      </span>
+                      <span className="text-[8px] px-1.5 py-0.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black rounded-md tracking-wider font-mono animate-pulse">
+                        限時公開
+                      </span>
+                    </div>
+                    <span className="text-[9px] text-pink-200/90 font-mono tracking-wider font-bold">
+                      HAPPY BIRすうDAY 拼貼桌布
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-pink-300 z-10 group-hover:translate-x-1 transition-transform">
+                  <span>下載專區</span>
+                  <span className="text-xs">➔</span>
+                </div>
+              </motion.button>
+
+              {/* 4. 呼吸像素心條下方獨立按鈕：熱門商品 (Hot Products Independent Button) */}
               <motion.button
                 onClick={() => setShowMerchSubpage(true)}
                 whileHover={{ scale: 1.02 }}
@@ -2458,6 +2494,81 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                   紡塊像素 CUBEPIXEL • 保持你的可愛
                 </div>
               </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Birthday Limited Wallpaper Subpage Modal */}
+        {showBirthdayWallpaperSubpage && (
+          <motion.div
+            key="birthday_wallpaper_subpage"
+            initial={{ opacity: 0, y: 150 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 150 }}
+            transition={{ type: "spring", damping: 25, stiffness: 180 }}
+            className="absolute inset-0 z-50 flex flex-col items-center justify-between p-4 bg-[#0a0f1d]/98 backdrop-blur-xl w-full h-full"
+          >
+            {/* Top Back/Close bar */}
+            <div className="w-full flex justify-between items-center text-[9px] tracking-widest text-white/40 uppercase pt-2 pb-2 z-40 font-mono border-b border-pink-500/30">
+              <button 
+                onClick={() => setShowBirthdayWallpaperSubpage(false)}
+                className="flex items-center gap-1 text-pink-300 hover:text-white font-bold tracking-widest cursor-pointer"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span>返回</span>
+              </button>
+              <div className="flex items-center gap-1.5 text-pink-300 font-bold">
+                <span className="text-xs">🎂</span>
+                <span>LIMITED SPECIAL // 限時公開</span>
+              </div>
+            </div>
+
+            {/* Scrollable Content Container */}
+            <div className="flex-1 w-full overflow-y-auto py-3 px-2 my-auto flex flex-col items-center justify-center gap-3">
+              <div className="w-full max-w-sm text-center space-y-3">
+                <div className="inline-flex items-center gap-2 py-1 px-3 bg-pink-950/70 border border-pink-500/50 rounded-full text-pink-200 text-[10px] font-mono font-bold tracking-wider shadow-md">
+                  <span>🎉 涼海生日會限定 • 拼貼桌布</span>
+                </div>
+
+                <h3 className="text-sm font-black text-white tracking-wider font-rounded drop-shadow-[0_0_12px_rgba(244,114,182,0.5)]">
+                  HAPPY BIRすうDAY 拼貼桌布
+                </h3>
+
+                {/* Display Image Container */}
+                <div className="w-full rounded-2xl overflow-hidden border-2 border-pink-500/40 bg-black/80 shadow-[0_0_35px_rgba(244,114,182,0.3)] relative group flex items-center justify-center p-1">
+                  <img 
+                    src="https://drive.google.com/thumbnail?id=13lY1U8B09vWKkgu34pvoXg2V_FQwRvfr&sz=w1500"
+                    alt="涼海生日會限定 HAPPY BIRすうDAY 拼貼桌布"
+                    className="w-full h-auto max-h-[50vh] object-contain rounded-xl"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col gap-2 pt-1">
+                  <a 
+                    href="https://drive.google.com/file/d/13lY1U8B09vWKkgu34pvoXg2V_FQwRvfr/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:from-pink-400 hover:via-rose-400 hover:to-purple-500 text-white rounded-xl text-xs font-black font-mono transition-all shadow-[0_0_20px_rgba(244,114,182,0.4)] flex items-center justify-center gap-2"
+                  >
+                    <span>📥 下載原圖 (Google Drive)</span>
+                  </a>
+                  <p className="text-[10px] text-white/50 font-mono">
+                    💡 提示：點擊按鈕開啟原圖下載，長按上方預覽圖亦可直接儲存至相簿
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Button to exit */}
+            <div className="w-full flex flex-col gap-2 max-w-sm px-4 mt-1">
+              <button 
+                onClick={() => setShowBirthdayWallpaperSubpage(false)}
+                className="w-full py-3 bg-white/5 hover:bg-white/10 active:scale-95 text-white font-black text-xs tracking-widest uppercase rounded-xl transition-all duration-200 cursor-pointer pointer-events-auto"
+              >
+                關閉頁面
+              </button>
             </div>
           </motion.div>
         )}
