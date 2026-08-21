@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, Monitor, RefreshCw, ChevronLeft, AlertTriangle } from 'lucide-react';
+import { Sparkles, Monitor, RefreshCw, ChevronLeft, AlertTriangle, Lock, Download } from 'lucide-react';
 import { EventCalendar } from './EventCalendar';
 import { umiriPhotoBase64 as umiriOfficialPhoto } from '../assets/umiriPhotoBase64';
 
 const TANJIRO_IMAGE_URL = "/images/tanjiro_qposket.jpg";
 
 const NEW_LOGO_URL = "https://drive.google.com/thumbnail?id=1HvP72IEkODWDk29WboH2lHwIq8bvNEZ-&sz=w1000";
+
+// 涼海生日會拼貼桌布開放下載時段：8/21 18:00 (晚上6點) ~ 8/23 19:00 (晚上7點) (台灣時間 GMT+8)
+const BIRTHDAY_WALLPAPER_START_TIME = new Date('2026-08-21T18:00:00+08:00').getTime();
+const BIRTHDAY_WALLPAPER_END_TIME = new Date('2026-08-23T19:00:00+08:00').getTime();
 
 const COLORS = [
   '#F08080', // 紅/淺珊瑚紅 (Light Coral)
@@ -194,6 +198,19 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
   const [isStandalone, setIsStandalone] = useState(false);
   const [selectedMobileFighter, setSelectedMobileFighter] = useState<any | null>(null);
   const [selectedHeartId, setSelectedHeartId] = useState<string | null>(null);
+
+  // 實時時間戳記，每秒自動更新以配合限時活動自動解鎖與隱藏
+  const [currentTimestamp, setCurrentTimestamp] = useState<number>(() => Date.now());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTimestamp(Date.now());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const isBirthdayWallpaperExpired = currentTimestamp > BIRTHDAY_WALLPAPER_END_TIME;
+  const isBirthdayWallpaperUnlocked = currentTimestamp >= BIRTHDAY_WALLPAPER_START_TIME && !isBirthdayWallpaperExpired;
 
   useEffect(() => {
     const checkStandalone = () => {
@@ -684,40 +701,46 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 </div>
               </div>
 
-              {/* 3. 限時公開專區：涼海生日會限定 HAPPY BIRすうDAY 拼貼桌布下載區 (Above Merch Button) */}
-              <motion.button
-                onClick={() => setShowBirthdayWallpaperSubpage(true)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.96 }}
-                className="w-full py-3 px-4 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-indigo-500/20 hover:from-pink-500/30 hover:via-purple-500/30 hover:to-indigo-500/30 border border-pink-400/40 hover:border-pink-300 rounded-2xl flex items-center justify-between cursor-pointer shadow-[0_0_25px_rgba(244,114,182,0.25)] transition-all duration-200 group relative overflow-hidden"
-              >
-                {/* Ambient glow & shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              {/* 3. 限時公開專區：涼海生日會限定 HAPPY BIRすうDAY 拼貼桌布 (Above Merch Button, completely hidden when expired) */}
+              {!isBirthdayWallpaperExpired && (
+                <motion.button
+                  onClick={() => setShowBirthdayWallpaperSubpage(true)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="w-full py-3 px-4 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-indigo-500/20 hover:from-pink-500/30 hover:via-purple-500/30 hover:to-indigo-500/30 border border-pink-400/40 hover:border-pink-300 rounded-2xl flex items-center justify-between cursor-pointer shadow-[0_0_25px_rgba(244,114,182,0.25)] transition-all duration-200 group relative overflow-hidden"
+                >
+                  {/* Ambient glow & shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
-                <div className="flex items-center gap-3 z-10">
-                  <div className="p-2 bg-pink-500/25 rounded-xl flex items-center justify-center border border-pink-300/40 drop-shadow-[0_0_10px_rgba(244,114,182,0.7)] text-base">
-                    🎂
-                  </div>
-                  <div className="flex flex-col items-start text-left">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-black text-white tracking-wider font-rounded">
-                        涼海生日會限定
-                      </span>
-                      <span className="text-[8px] px-1.5 py-0.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black rounded-md tracking-wider font-mono animate-pulse">
-                        限時公開
+                  <div className="flex items-center gap-3 z-10">
+                    <div className="p-2 bg-pink-500/25 rounded-xl flex items-center justify-center border border-pink-300/40 drop-shadow-[0_0_10px_rgba(244,114,182,0.7)] text-base">
+                      🎂
+                    </div>
+                    <div className="flex flex-col items-start text-left">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-black text-white tracking-wider font-rounded">
+                          涼海生日會限定
+                        </span>
+                        <span className={`text-[8px] px-1.5 py-0.5 ${
+                          isBirthdayWallpaperUnlocked 
+                            ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white animate-pulse' 
+                            : 'bg-slate-800 text-pink-300 border border-pink-500/40'
+                        } font-black rounded-md tracking-wider font-mono`}>
+                          {isBirthdayWallpaperUnlocked ? '限時開放中' : '預覽中 (8/21 18:00開放)'}
+                        </span>
+                      </div>
+                      <span className="text-[9px] text-pink-200/90 font-mono tracking-wider font-bold">
+                        HAPPY BIRすうDAY 拼貼桌布
                       </span>
                     </div>
-                    <span className="text-[9px] text-pink-200/90 font-mono tracking-wider font-bold">
-                      HAPPY BIRすうDAY 拼貼桌布
-                    </span>
                   </div>
-                </div>
 
-                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-pink-300 z-10 group-hover:translate-x-1 transition-transform">
-                  <span>下載專區</span>
-                  <span className="text-xs">➔</span>
-                </div>
-              </motion.button>
+                  <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-pink-300 z-10 group-hover:translate-x-1 transition-transform">
+                    <span>{isBirthdayWallpaperUnlocked ? '立即下載' : '查看預覽'}</span>
+                    <span className="text-xs">➔</span>
+                  </div>
+                </motion.button>
+              )}
 
               {/* 4. 呼吸像素心條下方獨立按鈕：熱門商品 (Hot Products Independent Button) */}
               <motion.button
@@ -2498,8 +2521,8 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
           </motion.div>
         )}
 
-        {/* Birthday Limited Wallpaper Subpage Modal */}
-        {showBirthdayWallpaperSubpage && (
+        {/* Birthday Limited Wallpaper Subpage Modal (completely hidden when expired) */}
+        {showBirthdayWallpaperSubpage && !isBirthdayWallpaperExpired && (
           <motion.div
             key="birthday_wallpaper_subpage"
             initial={{ opacity: 0, y: 150 }}
@@ -2526,8 +2549,10 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
             {/* Scrollable Content Container */}
             <div className="flex-1 w-full overflow-y-auto py-3 px-2 my-auto flex flex-col items-center justify-center gap-3">
               <div className="w-full max-w-sm text-center space-y-3">
-                <div className="inline-flex items-center gap-2 py-1 px-3 bg-pink-950/70 border border-pink-500/50 rounded-full text-pink-200 text-[10px] font-mono font-bold tracking-wider shadow-md">
-                  <span>🎉 涼海生日會限定 • 拼貼桌布</span>
+                <div className={`inline-flex items-center gap-2 py-1 px-3 ${
+                  isBirthdayWallpaperUnlocked ? 'bg-pink-950/70 border-pink-500/50 text-pink-200' : 'bg-slate-900/80 border-slate-700/80 text-pink-300'
+                } border rounded-full text-[10px] font-mono font-bold tracking-wider shadow-md`}>
+                  <span>{isBirthdayWallpaperUnlocked ? '🎉 涼海生日會限定 • 限時開放下載中' : '🔒 涼海生日會限定 • 預覽模式'}</span>
                 </div>
 
                 <h3 className="text-sm font-black text-white tracking-wider font-rounded drop-shadow-[0_0_12px_rgba(244,114,182,0.5)]">
@@ -2535,28 +2560,77 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                 </h3>
 
                 {/* Display Image Container */}
-                <div className="w-full rounded-2xl overflow-hidden border-2 border-pink-500/40 bg-black/80 shadow-[0_0_35px_rgba(244,114,182,0.3)] relative group flex items-center justify-center p-1">
+                <div 
+                  className="w-full rounded-2xl overflow-hidden border-2 border-pink-500/40 bg-black/80 shadow-[0_0_35px_rgba(244,114,182,0.3)] relative group flex items-center justify-center p-1 select-none"
+                  onContextMenu={(e) => {
+                    if (!isBirthdayWallpaperUnlocked) {
+                      e.preventDefault();
+                    }
+                  }}
+                >
                   <img 
                     src="https://drive.google.com/thumbnail?id=13lY1U8B09vWKkgu34pvoXg2V_FQwRvfr&sz=w1500"
                     alt="涼海生日會限定 HAPPY BIRすうDAY 拼貼桌布"
-                    className="w-full h-auto max-h-[50vh] object-contain rounded-xl"
+                    className={`w-full h-auto max-h-[50vh] object-contain rounded-xl ${
+                      isBirthdayWallpaperUnlocked ? 'select-auto' : 'pointer-events-none select-none'
+                    }`}
                     referrerPolicy="no-referrer"
+                    draggable={isBirthdayWallpaperUnlocked}
+                    style={{
+                      WebkitTouchCallout: isBirthdayWallpaperUnlocked ? 'default' : 'none',
+                      userSelect: isBirthdayWallpaperUnlocked ? 'auto' : 'none',
+                    }}
                   />
+                  {!isBirthdayWallpaperUnlocked && (
+                    <div className="absolute top-3 right-3 px-2 py-1 bg-black/75 backdrop-blur-md border border-pink-400/40 rounded-lg text-[10px] text-pink-200 font-mono flex items-center gap-1 shadow-md">
+                      <Lock className="w-3 h-3 text-pink-300" />
+                      <span>預覽中 (鎖定下載)</span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Action Buttons */}
+                {/* Action Buttons & Time Notice */}
                 <div className="flex flex-col gap-2 pt-1">
-                  <a 
-                    href="https://drive.google.com/file/d/13lY1U8B09vWKkgu34pvoXg2V_FQwRvfr/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:from-pink-400 hover:via-rose-400 hover:to-purple-500 text-white rounded-xl text-xs font-black font-mono transition-all shadow-[0_0_20px_rgba(244,114,182,0.4)] flex items-center justify-center gap-2"
-                  >
-                    <span>📥 下載原圖 (Google Drive)</span>
-                  </a>
-                  <p className="text-[10px] text-white/50 font-mono">
-                    💡 提示：點擊按鈕開啟原圖下載，長按上方預覽圖亦可直接儲存至相簿
-                  </p>
+                  {isBirthdayWallpaperUnlocked ? (
+                    <>
+                      <a 
+                        href="https://drive.google.com/file/d/13lY1U8B09vWKkgu34pvoXg2V_FQwRvfr/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3 bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:from-pink-400 hover:via-rose-400 hover:to-purple-500 text-white rounded-xl text-xs font-black font-mono transition-all shadow-[0_0_20px_rgba(244,114,182,0.4)] flex items-center justify-center gap-2 active:scale-98"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>📥 下載原圖 (Google Drive)</span>
+                      </a>
+                      <div className="p-2.5 bg-pink-950/40 border border-pink-500/30 rounded-xl text-center space-y-1 backdrop-blur-sm">
+                        <p className="text-[10px] text-pink-300 font-mono font-bold">
+                          ⏳ 開放至 8/23 19:00 截止，結束後將完全隱藏本區塊
+                        </p>
+                        <p className="text-[10px] text-white/60 font-mono">
+                          💡 點擊按鈕開啟原圖下載，長按上方預覽圖亦可直接儲存至相簿
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <button 
+                        disabled
+                        className="w-full py-3 bg-slate-800/90 border border-pink-500/30 text-white/40 rounded-xl text-xs font-black font-mono flex items-center justify-center gap-2 cursor-not-allowed select-none shadow-inner"
+                      >
+                        <Lock className="w-3.5 h-3.5 text-pink-400/80" />
+                        <span>🔒 下載已鎖定（8/21 18:00 開放）</span>
+                      </button>
+                      <div className="p-3 bg-pink-950/40 border border-pink-500/30 rounded-xl text-center space-y-1.5 backdrop-blur-sm">
+                        <div className="text-[11px] font-bold text-pink-300 font-mono flex items-center justify-center gap-1.5">
+                          <span>⏰</span>
+                          <span>開放下載時間：8/21 18:00 ～ 8/23 19:00</span>
+                        </div>
+                        <p className="text-[10px] text-white/50 font-mono leading-relaxed">
+                          目前為預覽狀態（暫時鎖定長按儲存與原圖下載），開放時間到達時將自動解除鎖定。
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
