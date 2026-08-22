@@ -275,6 +275,58 @@ const MobilePixelN: React.FC<{
   );
 };
 
+// Computer-style Pixel Shopping Bag icon component for Hot Products / Merch (10x10)
+const MobilePixelBag: React.FC<{ 
+  color?: string; 
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#F45B3E', onClick, size = 'sm', className = '', pulse = false }) => {
+  // 0: transparent, 1: white outline/handle, 2: bag body fill (rich coral-orange)
+  const bagPattern = [
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 1, 2, 0, 0, 2, 1, 0, 0],
+    [0, 0, 1, 2, 0, 0, 2, 1, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {bagPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 // Computer-style Pixel Diamond (Rhombus) icon component for Hot Products / Merch (10x10)
 const MobilePixelDiamond: React.FC<{ 
   color?: string; 
@@ -282,7 +334,7 @@ const MobilePixelDiamond: React.FC<{
   size?: 'xs' | 'sm' | 'md' | 'lg'; 
   className?: string; 
   pulse?: boolean;
-}> = ({ color = '#E05A47', onClick, size = 'sm', className = '', pulse = false }) => {
+}> = ({ color = '#FA7268', onClick, size = 'sm', className = '', pulse = false }) => {
   const diamondPattern = [
     [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
     [0, 0, 0, 1, 1, 2, 1, 0, 0, 0],
@@ -1089,16 +1141,16 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
                       </div>
                     </motion.button>
 
-                    {/* 2. 序列第二個：深珊瑚紅菱形 ICON (熱門商品) */}
+                    {/* 2. 序列第二個：珊瑚橘紅購物袋 ICON (熱門商品) */}
                     <motion.button
                       onClick={() => setShowMerchSubpage(true)}
                       whileHover={{ scale: 1.08 }}
                       whileTap={{ scale: 0.92 }}
-                      className="aspect-square w-full bg-[#E05A47]/10 hover:bg-[#E05A47]/20 border border-[#E05A47]/30 hover:border-[#E05A47]/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(224,90,71,0.15)] group cursor-pointer"
+                      className="aspect-square w-full bg-[#F45B3E]/10 hover:bg-[#F45B3E]/20 border border-[#F45B3E]/30 hover:border-[#F45B3E]/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(244,91,62,0.15)] group cursor-pointer"
                       title="熱門商品"
                     >
-                      <div className="drop-shadow-[0_0_8px_rgba(224,90,71,0.8)]">
-                        <MobilePixelDiamond color="#E05A47" size="lg" pulse />
+                      <div className="drop-shadow-[0_0_8px_rgba(244,91,62,0.8)]">
+                        <MobilePixelBag color="#F45B3E" size="lg" pulse />
                       </div>
                     </motion.button>
 
