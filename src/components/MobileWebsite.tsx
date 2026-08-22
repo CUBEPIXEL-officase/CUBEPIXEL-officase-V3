@@ -68,7 +68,7 @@ interface MobileWebsiteProps {
   setActiveSubPage: (sub: string | null) => void;
 }
 
-// Computer-style Pixel Heart component translated for Mobile Website
+// Computer-style Pixel Heart component translated for Mobile Website (10x10)
 const MobilePixelHeart: React.FC<{ 
   color: string; 
   onClick?: () => void; 
@@ -77,13 +77,16 @@ const MobilePixelHeart: React.FC<{
   pulse?: boolean;
 }> = ({ color, onClick, size = 'sm', className = '', pulse = false }) => {
   const heartPattern = [
-    [0, 1, 1, 0, 1, 1, 0],
-    [1, 2, 2, 1, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1],
-    [0, 1, 2, 2, 2, 1, 0],
-    [0, 0, 1, 2, 1, 0, 0],
-    [0, 0, 0, 1, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+    [1, 2, 2, 1, 0, 0, 1, 2, 2, 1],
+    [1, 2, 2, 2, 1, 1, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    [0, 0, 1, 2, 2, 2, 2, 1, 0, 0],
+    [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
   ];
 
   const pixelSize = size === 'xs' 
@@ -92,7 +95,7 @@ const MobilePixelHeart: React.FC<{
     ? 'w-[1.5px] h-[1.5px]' 
     : size === 'md' 
     ? 'w-[2.5px] h-[2.5px]' 
-    : 'w-[4px] h-[4px]';
+    : 'w-[3.5px] h-[3.5px]';
 
   return (
     <motion.div 
@@ -101,7 +104,7 @@ const MobilePixelHeart: React.FC<{
       whileHover={onClick ? { scale: 1.15 } : {}}
       whileTap={onClick ? { scale: 0.95 } : {}}
     >
-      <div className={`p-0.5 grid grid-cols-7 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
         {heartPattern.flat().map((pixel, i) => (
           <div 
             key={i} 
@@ -116,24 +119,26 @@ const MobilePixelHeart: React.FC<{
   );
 };
 
-// Computer-style Pixel Download icon component
+// Computer-style Pixel Download icon component (10x10)
 const MobilePixelDownload: React.FC<{ 
   color: string; 
+  borderColor?: string;
   onClick?: () => void; 
   size?: 'xs' | 'sm' | 'md' | 'lg'; 
   className?: string; 
   pulse?: boolean;
-}> = ({ color, onClick, size = 'sm', className = '', pulse = false }) => {
+}> = ({ color, borderColor = '#FFFFFF', onClick, size = 'sm', className = '', pulse = false }) => {
   const downloadPattern = [
-    [0, 0, 0, 1, 1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 2, 1, 0, 0, 0],
-    [0, 0, 0, 1, 2, 1, 0, 0, 0],
-    [1, 1, 1, 1, 2, 1, 1, 1, 1],
-    [0, 1, 2, 2, 2, 2, 2, 1, 0],
-    [0, 0, 1, 2, 2, 2, 1, 0, 0],
-    [0, 0, 0, 1, 2, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 2, 1, 0, 0, 0],
+    [1, 1, 1, 1, 1, 2, 1, 1, 1, 1],
+    [0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    [0, 0, 1, 2, 2, 2, 2, 1, 0, 0],
+    [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ];
 
   const pixelSize = size === 'xs' 
@@ -142,7 +147,7 @@ const MobilePixelDownload: React.FC<{
     ? 'w-[1.5px] h-[1.5px]' 
     : size === 'md' 
     ? 'w-[2.5px] h-[2.5px]' 
-    : 'w-[4px] h-[4px]';
+    : 'w-[3.5px] h-[3.5px]';
 
   return (
     <motion.div 
@@ -151,13 +156,431 @@ const MobilePixelDownload: React.FC<{
       whileHover={onClick ? { scale: 1.15 } : {}}
       whileTap={onClick ? { scale: 0.95 } : {}}
     >
-      <div className={`p-0.5 grid grid-cols-9 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
         {downloadPattern.flat().map((pixel, i) => (
           <div 
             key={i} 
             className={pixelSize}
             style={{ 
+              backgroundColor: pixel === 1 ? borderColor : pixel === 2 ? color : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel Compass icon component (Red/White for Store Latest News) (10x10)
+const MobilePixelCompass: React.FC<{ 
+  color?: string; 
+  needleColor?: string;
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#EF4444', needleColor = '#94A3B8', onClick, size = 'sm', className = '', pulse = false }) => {
+  // 0: transparent, 1: outer border (white), 2: north needle (red), 3: south needle (light silver/needleColor)
+  const compassPattern = [
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 1, 1, 0, 2, 2, 0, 1, 1, 0],
+    [0, 1, 0, 0, 2, 2, 0, 0, 1, 0],
+    [1, 0, 0, 2, 2, 2, 0, 0, 0, 1],
+    [1, 2, 2, 2, 1, 1, 3, 3, 3, 1],
+    [1, 2, 2, 2, 1, 1, 3, 3, 3, 1],
+    [1, 0, 0, 0, 3, 3, 3, 0, 0, 1],
+    [0, 1, 0, 0, 3, 3, 0, 0, 1, 0],
+    [0, 1, 1, 0, 3, 3, 0, 1, 1, 0],
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {compassPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : pixel === 3 ? needleColor : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel 'N' icon component (Red for Store Latest News) (10x10)
+const MobilePixelN: React.FC<{ 
+  color?: string; 
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#EF4444', onClick, size = 'sm', className = '', pulse = false }) => {
+  const nPattern = [
+    [1, 2, 2, 1, 0, 0, 0, 1, 2, 1],
+    [1, 2, 2, 2, 1, 0, 0, 1, 2, 1],
+    [1, 2, 1, 2, 2, 1, 0, 1, 2, 1],
+    [1, 2, 1, 1, 2, 2, 1, 1, 2, 1],
+    [1, 2, 1, 0, 1, 2, 2, 1, 2, 1],
+    [1, 2, 1, 0, 0, 1, 2, 2, 2, 1],
+    [1, 2, 1, 0, 0, 0, 1, 2, 2, 1],
+    [1, 2, 1, 0, 0, 0, 1, 2, 2, 1],
+    [1, 2, 2, 1, 0, 0, 1, 2, 2, 1],
+    [1, 1, 1, 0, 0, 0, 1, 1, 1, 1],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {nPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
               backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel Diamond (Rhombus) icon component for Hot Products / Merch (10x10)
+const MobilePixelDiamond: React.FC<{ 
+  color?: string; 
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#E05A47', onClick, size = 'sm', className = '', pulse = false }) => {
+  const diamondPattern = [
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 2, 1, 0, 0, 0],
+    [0, 0, 1, 1, 2, 2, 2, 1, 0, 0],
+    [0, 1, 1, 2, 2, 2, 2, 2, 1, 0],
+    [1, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    [0, 0, 1, 2, 2, 2, 2, 1, 0, 0],
+    [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {diamondPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel Wi-Fi icon component (Red for Store Latest News) (10x10)
+const MobilePixelWifi: React.FC<{ 
+  color?: string; 
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#EF4444', onClick, size = 'sm', className = '', pulse = false }) => {
+  const wifiPattern = [
+    [0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    [1, 2, 1, 0, 0, 0, 0, 1, 2, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 2, 2, 2, 2, 1, 0, 0],
+    [0, 1, 2, 0, 0, 0, 0, 2, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
+    [0, 0, 1, 2, 0, 0, 2, 1, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {wifiPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel Chat Bubble icon component (Orange for Reservation / Social Chat) (10x10)
+const MobilePixelChat: React.FC<{ 
+  color?: string; 
+  dotColor?: string;
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#FFB347', dotColor = '#FFFFFF', onClick, size = 'sm', className = '', pulse = false }) => {
+  // 0: transparent, 1: white border, 2: orange fill, 3: interior chat dots (white)
+  const chatPattern = [
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 3, 2, 3, 2, 3, 2, 2, 1],
+    [1, 2, 3, 2, 3, 2, 3, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [0, 1, 1, 1, 1, 2, 2, 1, 1, 0],
+    [0, 0, 0, 0, 1, 2, 2, 1, 0, 0],
+    [0, 0, 0, 0, 1, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {chatPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : pixel === 3 ? dotColor : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel Phone Receiver icon component (Orange for Reservation) (10x10)
+const MobilePixelPhone: React.FC<{ 
+  color?: string; 
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#FFB347', onClick, size = 'sm', className = '', pulse = false }) => {
+  const phonePattern = [
+    [0, 0, 0, 0, 1, 2, 2, 2, 1, 0],
+    [0, 0, 0, 1, 2, 2, 2, 2, 2, 1],
+    [0, 0, 1, 2, 2, 1, 1, 1, 2, 1],
+    [0, 1, 2, 2, 1, 0, 0, 0, 1, 0],
+    [1, 2, 2, 1, 0, 0, 0, 0, 0, 0],
+    [1, 2, 2, 1, 0, 0, 0, 0, 0, 0],
+    [1, 2, 2, 1, 0, 0, 0, 1, 0, 0],
+    [1, 2, 2, 1, 0, 0, 1, 2, 1, 0],
+    [0, 1, 2, 2, 1, 1, 2, 2, 2, 1],
+    [0, 0, 1, 2, 2, 2, 2, 2, 1, 0],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {phonePattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel Contact icon component (Green for Character Intro) (10x10)
+const MobilePixelContact: React.FC<{ 
+  color?: string; 
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#7CFC00', onClick, size = 'sm', className = '', pulse = false }) => {
+  const contactPattern = [
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 1, 2, 2, 2, 2, 1, 0, 0],
+    [0, 0, 1, 2, 2, 2, 2, 1, 0, 0],
+    [0, 0, 1, 2, 2, 2, 2, 1, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {contactPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: pixel === 1 ? '#FFFFFF' : pixel === 2 ? color : 'transparent' 
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+// Computer-style Pixel Calendar icon component (Yellow/Red Pixel Calendar for Calendar) (10x10)
+const MobilePixelCalendar: React.FC<{ 
+  color?: string; 
+  headerColor?: string;
+  onClick?: () => void; 
+  size?: 'xs' | 'sm' | 'md' | 'lg'; 
+  className?: string; 
+  pulse?: boolean;
+}> = ({ color = '#FFE600', headerColor = '#EF4444', onClick, size = 'sm', className = '', pulse = false }) => {
+  // 0: transparent, 1: white border/highlight/binders, 2: yellow body/accent, 3: red top bar
+  const calendarPattern = [
+    [0, 1, 0, 0, 1, 1, 0, 0, 1, 0],
+    [1, 3, 3, 3, 3, 3, 3, 3, 3, 1],
+    [1, 3, 3, 3, 3, 3, 3, 3, 3, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 2, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  ];
+
+  const pixelSize = size === 'xs' 
+    ? 'w-[1px] h-[1px]' 
+    : size === 'sm' 
+    ? 'w-[1.5px] h-[1.5px]' 
+    : size === 'md' 
+    ? 'w-[2.5px] h-[2.5px]' 
+    : 'w-[3.5px] h-[3.5px]';
+
+  return (
+    <motion.div 
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center ${className} ${pulse ? 'animate-pulse' : ''}`}
+      whileHover={onClick ? { scale: 1.15 } : {}}
+      whileTap={onClick ? { scale: 0.95 } : {}}
+    >
+      <div className={`p-0.5 grid grid-cols-10 gap-[0.5px] ${onClick ? 'cursor-pointer' : ''}`}>
+        {calendarPattern.flat().map((pixel, i) => (
+          <div 
+            key={i} 
+            className={pixelSize}
+            style={{ 
+              backgroundColor: 
+                pixel === 1 ? '#FFFFFF' : 
+                pixel === 2 ? color : 
+                pixel === 3 ? headerColor : 
+                'transparent' 
             }}
           />
         ))}
@@ -572,7 +995,7 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: 'spring' }}
-            className="absolute inset-0 flex flex-col items-center justify-between p-6 z-20 bg-[#000B18] relative w-full h-full"
+            className="absolute inset-0 flex flex-col items-center justify-between p-3 sm:p-4 z-20 bg-[#000B18] relative w-full h-full overflow-hidden"
             style={{
               backgroundImage: `
                 linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
@@ -581,250 +1004,217 @@ export const MobileWebsite: React.FC<MobileWebsiteProps> = () => {
               backgroundSize: `${GRID_SIZE}px ${GRID_SIZE}px`,
             }}
           >
-            {/* Interactive Pixel Heart Buttons in Top-Left Corner */}
-            <div className="absolute top-4 left-4 flex flex-col gap-3 z-30 pointer-events-auto">
-              {/* Store Latest News (Red Heart) */}
-              <motion.button 
-                onClick={() => setShowNewsSubpage(true)}
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2.5 bg-red-500/10 hover:bg-red-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(240,128,128,0.5)]"
-                title="店面最新資訊"
-              >
-                <MobilePixelHeart color="#F08080" size="lg" pulse />
-              </motion.button>
+            {/* 上方 ⅓ 區塊：粉色霓虹細框線，LOGO 擺在正中間，下方以無框線小字標注地址與電話 */}
+            <div className="w-full max-w-sm sm:max-w-md h-[31vh] sm:h-[33vh] flex-none rounded-3xl border border-pink-400/60 shadow-[0_0_18px_rgba(244,114,182,0.35),inset_0_0_14px_rgba(244,114,182,0.12)] bg-black/40 backdrop-blur-md relative overflow-hidden flex flex-col items-center justify-between p-2.5 sm:p-3">
+              {/* Ambient pink glow */}
+              <div className="absolute inset-0 bg-gradient-to-b from-pink-500/10 via-transparent to-purple-500/10 pointer-events-none" />
 
-              {/* Service Reservation (Orange Heart) */}
-              <motion.button 
-                onClick={() => setShowReservationSubpage(true)}
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2.5 bg-amber-500/10 hover:bg-amber-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]"
-                title="社群預約功能"
-              >
-                <MobilePixelHeart color="#FFB347" size="lg" pulse />
-              </motion.button>
-
-              {/* Store Calendar (Yellow Heart) */}
-              <motion.button 
-                onClick={() => setShowCalendarSubpage(true)}
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2.5 bg-yellow-500/10 hover:bg-yellow-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(234,179,8,0.5)]"
-                title="店鋪專用行事曆"
-              >
-                <MobilePixelHeart color="#FFFF00" size="lg" pulse />
-              </motion.button>
-
-              {/* Character Intro (Green Heart) */}
-              <motion.button 
-                onClick={() => setShowIntroSubpage(true)}
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2.5 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(124,252,0,0.5)]"
-                title="角色介紹"
-              >
-                <MobilePixelHeart color="#7CFC00" size="lg" pulse />
-              </motion.button>
-
-              {/* Disabled / Secret (Gray Heart) */}
-              <motion.button 
-                onClick={() => {
-                  if (isSecretHeartPublished) {
-                    setShowSecretSubpage(true);
-                  }
-                }}
-                whileHover={isSecretHeartPublished ? { scale: 1.15 } : {}}
-                whileTap={isSecretHeartPublished ? { scale: 0.9 } : {}}
-                className={`p-2.5 bg-slate-500/10 rounded-2xl transition-all duration-200 flex items-center justify-center drop-shadow-[0_0_12px_rgba(76,94,110,0.5)] ${isSecretHeartPublished ? 'cursor-pointer hover:bg-slate-500/20' : 'cursor-not-allowed opacity-40'}`}
-                title={isSecretHeartPublished ? "神秘專區" : "尚未開放"}
-              >
-                <MobilePixelHeart color="#4C5E6E" size="lg" pulse={isSecretHeartPublished} />
-              </motion.button>
-
-              {/* Download App / APK Install (Below Green Heart) */}
-              {!isStandalone && (
-                <motion.button 
-                  onClick={() => setShowAppInstallSubpage(true)}
-                  whileHover={{ scale: 1.15 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2.5 bg-cyan-500/10 hover:bg-cyan-500/20 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-center drop-shadow-[0_0_12px_rgba(56,189,248,0.5)] animate-bounce"
-                  title="下載手機 App (PWA / APK)"
-                >
-                  <MobilePixelDownload color="#38BDF8" size="lg" pulse />
-                </motion.button>
-              )}
-            </div>
-
-            {/* Top header and Title Bar (Borderless) */}
-            <div className="w-full flex flex-col gap-2 pt-2 pb-2">
-              <div className="w-full flex justify-between items-center text-[9px] tracking-widest text-white/30 uppercase font-mono pl-14">
+              {/* Status Header */}
+              <div className="w-full flex justify-between items-center text-[8px] tracking-widest text-pink-300/60 uppercase font-mono z-10 px-1">
                 <div className="flex items-center gap-1.5">
-                  <MobilePixelDownload color="#7CFC00" size="xs" pulse className="translate-y-[-1px]" />
-                  <span>QPKS-APP-VER2.0</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse" />
+                  <span>QPKS // CUBEPIXEL</span>
                 </div>
                 <div>{currentTime}</div>
               </div>
-            </div>
 
-            {/* Central Content Area (Optimized for display/screen ratio with w-full) */}
-            <div className="flex-1 flex flex-col items-center justify-center gap-[4vh] w-full max-w-sm sm:max-w-md px-4 py-4 my-auto">
-              {/* 1. 特別放大居酒屋的logo (Scaled dynamically by aspect ratio to prevent overflow) */}
+              {/* Center LOGO with Perfect Circular Frame (Enlarged) */}
               <motion.div 
-                animate={{ y: [0, -8, 0] }}
+                animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative flex justify-center items-center"
+                className="relative flex justify-center items-center my-auto z-10"
               >
-                <img 
-                src={NEW_LOGO_URL} 
-                alt="紡塊像素 Logo" 
-                className="w-[28vh] h-[28vh] min-w-[130px] min-h-[130px] max-w-[190px] max-h-[190px] object-contain drop-shadow-[0_0_35px_rgba(251,191,36,0.35)] rounded-3xl"
-                referrerPolicy="no-referrer"
-                />
+                {/* Perfect Circle Frame */}
+                <div className="w-[21vh] h-[21vh] min-w-[140px] min-h-[140px] max-w-[195px] max-h-[195px] aspect-square rounded-full border border-pink-400/50 shadow-[0_0_22px_rgba(244,114,182,0.4),inset_0_0_15px_rgba(244,114,182,0.15)] bg-black/40 backdrop-blur-sm flex items-center justify-center p-2.5 relative overflow-hidden group">
+                  {/* Subtle circular pulse ring */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500/15 via-transparent to-amber-500/15 pointer-events-none" />
+                  
+                  <img 
+                    src={NEW_LOGO_URL} 
+                    alt="紡塊像素 Logo" 
+                    className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(251,191,36,0.45)] relative z-10"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://drive.google.com/thumbnail?id=1yqTzowdnAcZTofISD4xSGTz-GigyR_Ma&sz=w1000";
+                    }}
+                  />
+                </div>
               </motion.div>
 
-              {/* 2. 刪除整排像素心的可按動設計 並保持固態呼吸明暗 (Borderless card background) */}
-              <div className="w-full py-3 bg-white/[0.015] rounded-2xl px-4 flex flex-col items-center gap-2">
-                <div className="text-[8px] text-white/30 tracking-widest font-mono uppercase">
-                  - CUBEPIXEL HEARTBEAT / 像素呼吸 -
+              {/* 地址與電話區塊：無框線、小字標注 */}
+              <div className="w-full flex flex-col items-center gap-0.5 text-[8.5px] font-mono z-10 pb-0.5">
+                <div className="flex items-center justify-center gap-2.5 text-white/80">
+                  <span className="flex items-center gap-1">
+                    <span className="text-pink-300/80 text-[8px]">📍</span>
+                    <span className="text-amber-300 font-bold">福和路120號之2</span>
+                  </span>
+                  <span className="text-pink-400/40 font-bold">•</span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-pink-300/80 text-[8px]">📞</span>
+                    <span className="text-[#D1B3FF] font-bold">02-8925-2329</span>
+                  </span>
                 </div>
-                <div className="flex items-center justify-center gap-2.5">
-                  {HEARTS_CONFIG.map((heart) => (
-                    <MobilePixelHeart
-                      key={heart.id}
-                      color={heart.color}
-                      size="sm"
-                      pulse
-                      className="opacity-80"
-                    />
-                  ))}
+                <div className="text-[7.5px] text-emerald-400/80 font-mono tracking-tight">
+                  ⏰ 營業時間依照店內公告為基準
                 </div>
               </div>
+            </div>
 
-              {/* 3. 限時公開專區：涼海生日會 限定桌布 (Above Merch Button, completely hidden when expired) */}
-              {!isBirthdayWallpaperExpired && (
-                <motion.button
-                  onClick={() => setShowBirthdayWallpaperSubpage(true)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="w-full py-3 px-4 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-indigo-500/20 hover:from-pink-500/30 hover:via-purple-500/30 hover:to-indigo-500/30 border border-pink-400/40 hover:border-pink-300 rounded-2xl flex items-center justify-between cursor-pointer shadow-[0_0_25px_rgba(244,114,182,0.25)] transition-all duration-200 group relative overflow-hidden"
-                >
-                  {/* Ambient glow & shimmer effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            {/* 下方 ⅔ 區塊：粉色霓虹細框線，4個一排 ICON 序列，第一個為亮黃色菱形熱門商品 */}
+            <div className="w-full max-w-sm sm:max-w-md flex-1 min-h-0 rounded-3xl border border-pink-400/60 shadow-[0_0_18px_rgba(244,114,182,0.35),inset_0_0_14px_rgba(244,114,182,0.12)] bg-black/40 backdrop-blur-md relative overflow-hidden flex flex-col justify-between p-3 sm:p-3.5 mt-2.5">
+              {/* Ambient neon backdrop */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/15 to-pink-950/20 pointer-events-none" />
 
-                  <div className="flex items-center gap-3 z-10">
-                    <div className="p-2 bg-pink-500/25 rounded-xl flex items-center justify-center border border-pink-300/40 drop-shadow-[0_0_10px_rgba(244,114,182,0.7)] text-base">
-                      🎂
-                    </div>
-                    <div className="flex flex-col items-start text-left">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-black text-white tracking-wider font-rounded">
-                          涼海生日會
-                        </span>
-                        <span className={`text-[8px] px-1.5 py-0.5 ${
-                          isBirthdayWallpaperUnlocked 
-                            ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white animate-pulse' 
-                            : 'bg-slate-800 text-pink-300 border border-pink-500/40'
-                        } font-black rounded-md tracking-wider font-mono`}>
-                          {isBirthdayWallpaperUnlocked ? '限時開放中' : '8/21 18:00開放'}
-                        </span>
+              {/* Scrollable Container */}
+              <div className="w-full h-full flex flex-col justify-between gap-2.5 overflow-y-auto pr-0.5 custom-scrollbar z-10">
+                
+                {/* 4 個一排的 ICON 序列區 */}
+                <div className="w-full space-y-1.5">
+                  <div className="flex justify-between items-center text-[8px] text-pink-300/60 font-mono tracking-widest uppercase px-1">
+                    <span>CUBEPIXEL // 快捷導航</span>
+                    <span>4×N SEQUENCE</span>
+                  </div>
+
+                  <div className="grid grid-cols-4 gap-2 sm:gap-2.5">
+                    {/* 1. 店面最新資訊 (Red/Silver Pixel Compass) */}
+                    <motion.button
+                      onClick={() => setShowNewsSubpage(true)}
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.92 }}
+                      className="aspect-square w-full bg-red-500/10 hover:bg-red-500/20 border border-red-400/30 hover:border-red-400/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(239,68,68,0.15)] group cursor-pointer"
+                      title="店面最新資訊"
+                    >
+                      <div className="drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]">
+                        <MobilePixelCompass color="#EF4444" size="lg" pulse />
                       </div>
-                      <span className="text-[10px] text-pink-200/90 font-mono tracking-wider font-bold">
-                        限定桌布 • HAPPY BIRすうDAY
-                      </span>
-                    </div>
+                    </motion.button>
+
+                    {/* 2. 序列第二個：深珊瑚紅菱形 ICON (熱門商品) */}
+                    <motion.button
+                      onClick={() => setShowMerchSubpage(true)}
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.92 }}
+                      className="aspect-square w-full bg-[#E05A47]/10 hover:bg-[#E05A47]/20 border border-[#E05A47]/30 hover:border-[#E05A47]/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(224,90,71,0.15)] group cursor-pointer"
+                      title="熱門商品"
+                    >
+                      <div className="drop-shadow-[0_0_8px_rgba(224,90,71,0.8)]">
+                        <MobilePixelDiamond color="#E05A47" size="lg" pulse />
+                      </div>
+                    </motion.button>
+
+                    {/* 3. 社群預約功能 (Orange Pixel Chat Bubble) */}
+                    <motion.button
+                      onClick={() => setShowReservationSubpage(true)}
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.92 }}
+                      className="aspect-square w-full bg-amber-500/10 hover:bg-amber-500/20 border border-amber-400/30 hover:border-amber-400/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(245,158,11,0.15)] group cursor-pointer"
+                      title="社群預約功能"
+                    >
+                      <div className="drop-shadow-[0_0_8px_rgba(245,158,11,0.8)]">
+                        <MobilePixelChat color="#FFB347" size="lg" pulse />
+                      </div>
+                    </motion.button>
+
+                    {/* 4. 店鋪專用行事曆 (Yellow/Red Pixel Art Calendar) */}
+                    <motion.button
+                      onClick={() => setShowCalendarSubpage(true)}
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.92 }}
+                      className="aspect-square w-full bg-yellow-500/10 hover:bg-yellow-500/20 border border-yellow-300/30 hover:border-yellow-300/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(234,179,8,0.15)] group cursor-pointer"
+                      title="店鋪專用行事曆"
+                    >
+                      <div className="drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]">
+                        <MobilePixelCalendar color="#FFE600" size="lg" pulse />
+                      </div>
+                    </motion.button>
+
+                    {/* 5. 角色介紹 (Green Pixel Contact / Avatar) */}
+                    <motion.button
+                      onClick={() => setShowIntroSubpage(true)}
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.92 }}
+                      className="aspect-square w-full bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-400/30 hover:border-emerald-400/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(124,252,0,0.15)] group cursor-pointer"
+                      title="角色介紹"
+                    >
+                      <div className="drop-shadow-[0_0_8px_rgba(124,252,0,0.8)]">
+                        <MobilePixelContact color="#7CFC00" size="lg" pulse />
+                      </div>
+                    </motion.button>
+
+                    {/* 6. 神秘專區 (Gray Heart) */}
+                    <motion.button
+                      onClick={() => {
+                        if (isSecretHeartPublished) {
+                          setShowSecretSubpage(true);
+                        }
+                      }}
+                      whileHover={isSecretHeartPublished ? { scale: 1.08 } : {}}
+                      whileTap={isSecretHeartPublished ? { scale: 0.92 } : {}}
+                      className={`aspect-square w-full bg-slate-500/10 border border-slate-500/20 rounded-2xl flex items-center justify-center transition-all ${
+                        isSecretHeartPublished 
+                          ? 'hover:bg-slate-500/20 hover:border-slate-400/50 cursor-pointer shadow-[0_0_12px_rgba(76,94,110,0.3)]' 
+                          : 'cursor-not-allowed opacity-50'
+                      }`}
+                      title={isSecretHeartPublished ? "神秘專區" : "尚未開放"}
+                    >
+                      <div className="drop-shadow-[0_0_8px_rgba(76,94,110,0.6)]">
+                        <MobilePixelHeart color="#4C5E6E" size="lg" pulse={isSecretHeartPublished} />
+                      </div>
+                    </motion.button>
+
+                    {/* 7~15: 九個灰色佔位符 (9 Gray Placeholders) */}
+                    {Array.from({ length: 9 }).map((_, index) => (
+                      <div
+                        key={`placeholder-${index}`}
+                        className="aspect-square w-full bg-slate-800/20 border border-slate-700/30 rounded-2xl flex items-center justify-center transition-all opacity-40 cursor-not-allowed select-none shadow-[0_0_8px_rgba(0,0,0,0.2)]"
+                        title={`即將開放 #${index + 1}`}
+                      >
+                        <div className="opacity-60">
+                          <MobilePixelHeart color="#334155" size="lg" />
+                        </div>
+                      </div>
+                    ))}
+
+                    {/* 16. 涼海生日會限定桌布 (最後一個) */}
+                    {!isBirthdayWallpaperExpired ? (
+                      <motion.button
+                        onClick={() => setShowBirthdayWallpaperSubpage(true)}
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.92 }}
+                        className="aspect-square w-full bg-pink-500/10 hover:bg-pink-500/20 border border-pink-400/40 hover:border-pink-300 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(244,114,182,0.25)] group cursor-pointer relative overflow-hidden"
+                        title="涼海生日會 限定桌布"
+                      >
+                        <div className="drop-shadow-[0_0_8px_rgba(244,114,182,0.9)]">
+                          <MobilePixelHeart color="#FF69B4" size="lg" pulse />
+                        </div>
+                      </motion.button>
+                    ) : (
+                      <motion.button
+                        onClick={() => setShowIntroSubpage(true)}
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.92 }}
+                        className="aspect-square w-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-400/30 hover:border-purple-400/60 rounded-2xl flex items-center justify-center transition-all shadow-[0_0_12px_rgba(168,85,247,0.15)] group cursor-pointer"
+                        title="特別感謝"
+                      >
+                        <div className="drop-shadow-[0_0_8px_rgba(209,179,255,0.8)]">
+                          <MobilePixelHeart color="#D1B3FF" size="lg" pulse />
+                        </div>
+                      </motion.button>
+                    )}
                   </div>
+                </div>
 
-                  <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-pink-300 z-10 group-hover:translate-x-1 transition-transform">
-                    <span>{isBirthdayWallpaperUnlocked ? '立即下載' : '查看'}</span>
-                    <span className="text-xs">➔</span>
+                {/* Footer metadata */}
+                <div className="w-full flex flex-col items-center gap-0.5 pt-1 pb-0.5">
+                  <div className="flex items-center gap-1 text-[7px] text-white/30 tracking-widest uppercase font-mono">
+                    <Sparkles className="w-2 h-2 text-amber-400/60" />
+                    <span>CUBEPIXEL DEV TEAM</span>
                   </div>
-                </motion.button>
-              )}
-
-              {/* 4. 呼吸像素心條下方獨立按鈕：熱門商品 (Hot Products Independent Button) */}
-              <motion.button
-                onClick={() => setShowMerchSubpage(true)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.96 }}
-                className="w-full py-3 px-4 bg-gradient-to-r from-amber-500/15 via-rose-500/15 to-purple-500/15 hover:from-amber-500/25 hover:via-rose-500/25 hover:to-purple-500/25 border border-amber-500/30 hover:border-amber-400/60 rounded-2xl flex items-center justify-between cursor-pointer shadow-[0_0_20px_rgba(255,179,71,0.15)] transition-all duration-200 group relative overflow-hidden"
-              >
-                {/* Ambient glow & shine transition */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-
-                <div className="flex items-center gap-3 z-10">
-                  <div className="p-2 bg-amber-500/20 rounded-xl flex items-center justify-center border border-amber-400/40 drop-shadow-[0_0_10px_rgba(255,179,71,0.6)]">
-                    <MobilePixelHeart color="#FFB347" size="sm" pulse />
-                  </div>
-                  <div className="flex flex-col items-start text-left">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-black text-white tracking-widest font-rounded">
-                        熱門商品
-                      </span>
-                      <span className="text-[8px] px-1.5 py-0.5 bg-gradient-to-r from-red-500 to-amber-500 text-black font-black rounded-md tracking-wider font-mono animate-pulse">
-                        HOT
-                      </span>
-                    </div>
-                    <span className="text-[9px] text-amber-200/70 font-mono tracking-wider">
-                      CUBEPIXEL MERCH & GOODS
-                    </span>
+                  <div className="text-[7px] text-white/20 tracking-wide text-center font-rounded">
+                    紡塊像素 CubePixel_2026 感謝團長涼海璃製作
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-amber-300 z-10 group-hover:translate-x-1 transition-transform">
-                  <span>查看物販</span>
-                  <span className="text-xs">➔</span>
-                </div>
-              </motion.button>
-            </div>
-
-            {/* 3. 保留可愛字型 並將地址、電話與營業時間留在最下面 (Borderless flat visual design) */}
-            <div className="w-full max-w-sm sm:max-w-md bg-white/[0.01] rounded-2xl p-4 mb-3 space-y-1.5 relative">
-              <div className="space-y-1.5 text-left text-[11px] text-white/80 font-mono">
-                <p className="flex justify-between items-center">
-                  <span className="text-white/45 font-rounded text-[10px]">📍 實體地址:</span>
-                  <span className="font-bold text-amber-300">福和路120號之2</span>
-                </p>
-                <p className="flex justify-between items-center">
-                  <span className="text-white/45 font-rounded text-[10px]">📞 聯絡電話:</span>
-                  <span className="font-bold text-[#D1B3FF]">02-8925-2329</span>
-                </p>
-                <p className="flex justify-between items-center gap-2 pt-0.5 border-t border-white/5">
-                  <span className="text-white/45 font-rounded text-[10px] whitespace-nowrap">⏰ 營業時間:</span>
-                  <span className="font-bold text-emerald-400 text-right text-[10px] sm:text-[11px]">營業時間一切依照店內公告為基準</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Install App Banner Button */}
-            {!isStandalone && (
-              <motion.button 
-                onClick={() => setShowAppInstallSubpage(true)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full max-w-sm sm:max-w-md bg-gradient-to-r from-emerald-500/10 to-teal-500/10 hover:from-emerald-500/20 hover:to-teal-500/20 border border-emerald-500/25 rounded-2xl p-3 mb-3 text-center space-y-1 relative cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.1)] overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 p-1 bg-emerald-500 text-[8px] text-black font-black uppercase tracking-widest rounded-bl-xl font-mono">
-                  PWA / APK
-                </div>
-                <div className="flex items-center justify-center gap-2 text-white font-black text-xs tracking-wider">
-                  <span className="animate-pulse text-sm">📲</span>
-                  <span className="text-[11px]">下載 / 安裝 CUBEPIXEL 手機 App</span>
-                </div>
-                <div className="text-[9px] text-emerald-300/80 font-bold font-mono">
-                  支援全螢幕顯示 • 隱藏網址列 • 雲端實時更新
-                </div>
-              </motion.button>
-            )}
-
-            {/* Footer metadata details (Borderless) */}
-            <div className="w-full flex flex-col items-center gap-1 pt-2">
-              <div className="flex items-center gap-1 text-[8px] text-white/30 tracking-widest uppercase font-mono">
-                <Sparkles className="w-2.5 h-2.5 text-amber-400/60" />
-                <span>CUBEPIXEL DEV TEAM</span>
-              </div>
-              <div className="text-[8px] text-white/20 tracking-wide text-center font-rounded">
-                紡塊像素 CubePixel_2026 感謝團長涼海璃製作
               </div>
             </div>
           </motion.div>
